@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.1 — Markdown ingestion
+
+### Added
+- Markdown adapter for `.md` and `.markdown` files using canonical Documents.
+- Heading-aware Markdown chunking with preserved block types and provenance.
+- Markdown corpus and PDF/Markdown retrieval coexistence smoke tests.
+
 ## 0.2.0 — M2 Retrieval Foundation
 
 ### Added

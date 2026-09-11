@@ -38,6 +38,18 @@ Git repositories → BM25 → hybrid/RRF → structural filtering → reranking 
 metadata filtering → incremental indexing → evaluation/retrieval forensics.
 
 
+## M2 source ingestion
+
+Markdown files (`.md` and `.markdown`) enter through `MarkdownAdapter`, which
+produces the canonical `Document`. `MarkdownChunker` preserves heading paths,
+code blocks, lists, tables, and blockquotes while producing canonical `Chunk`
+objects. Those chunks use the existing source-agnostic indexing and retrieval
+pipeline alongside PDF chunks.
+
+```text
+Markdown → MarkdownAdapter → Document → MarkdownChunker → Chunk → retrieval
+```
+
 ## M1-derived retrieval foundation
 
 This work selectively absorbs proven M1 architecture into M2-owned abstractions:
