@@ -1,0 +1,212 @@
+[
+  {
+    "id": "Q001",
+    "category": "factual",
+    "question": "What is the 10X Rule?",
+    "expected_section": "Chapter 1"
+  },
+  {
+    "id": "Q002",
+    "category": "factual",
+    "question": "What are the two parts of the 10X Rule?",
+    "expected_section": "Chapter 1"
+  },
+  {
+    "id": "Q003",
+    "category": "factual",
+    "question": "What are the four degrees of action?",
+    "expected_section": "Chapter 7"
+  },
+  {
+    "id": "Q004",
+    "category": "factual",
+    "question": "What does the fourth degree of action mean?",
+    "expected_section": "Chapter 7"
+  },
+  {
+    "id": "Q005",
+    "category": "factual",
+    "question": "What are the four major mistakes people make when setting goals?",
+    "expected_section": "Chapter 1"
+  },
+  {
+    "id": "Q006",
+    "category": "conceptual",
+    "question": "Why does the author believe people commonly underestimate the amount of action required to achieve a goal?",
+    "expected_section": "Chapter 1-2"
+  },
+  {
+    "id": "Q007",
+    "category": "conceptual",
+    "question": "Why does the author consider average or normal levels of action dangerous?",
+    "expected_section": "Chapter 8"
+  },
+  {
+    "id": "Q008",
+    "category": "conceptual",
+    "question": "Why does the author argue that massive action can create new problems?",
+    "expected_section": "Chapter 7"
+  },
+  {
+    "id": "Q009",
+    "category": "conceptual",
+    "question": "Why does the author believe success must be maintained rather than achieved only once?",
+    "expected_section": "Chapter 1"
+  },
+  {
+    "id": "Q010",
+    "category": "conceptual",
+    "question": "Why does the author argue that setting goals too low can limit the actions required to achieve them?",
+    "expected_section": "Chapter 1-9"
+  },
+  {
+    "id": "Q011",
+    "category": "paraphrase",
+    "question": "According to the author, what happens when someone dramatically underestimates the effort required for a goal?",
+    "expected_section": "Chapter 2"
+  },
+  {
+    "id": "Q012",
+    "category": "paraphrase",
+    "question": "If someone keeps operating at ordinary levels of effort, why might they remain stuck at ordinary results?",
+    "expected_section": "Chapter 8"
+  },
+  {
+    "id": "Q013",
+    "category": "paraphrase",
+    "question": "What does the book suggest about continuing to act after encountering resistance?",
+    "expected_section": "Chapter 2-7"
+  },
+  {
+    "id": "Q014",
+    "category": "paraphrase",
+    "question": "How does the author connect unusually ambitious thinking with unusually large amounts of action?",
+    "expected_section": "Chapter 1"
+  },
+  {
+    "id": "Q015",
+    "category": "paraphrase",
+    "question": "Why does the author believe fear should lead to action rather than avoidance?",
+    "expected_section": "Chapter 16"
+  },
+  {
+    "id": "Q016",
+    "category": "chunk-boundary",
+    "question": "How does the author connect setting ambitious targets with estimating the effort required to achieve them?",
+    "expected_section": "Chapter 1"
+  },
+  {
+    "id": "Q017",
+    "category": "chunk-boundary",
+    "question": "How does the author connect massive thinking with massive action?",
+    "expected_section": "Chapter 1"
+  },
+  {
+    "id": "Q018",
+    "category": "chunk-boundary",
+    "question": "Why does the author connect normal levels of action with vulnerability to unexpected events?",
+    "expected_section": "Chapter 2-8"
+  },
+  {
+    "id": "Q019",
+    "category": "chunk-boundary",
+    "question": "How does the author connect taking massive action with encountering new problems and criticism?",
+    "expected_section": "Chapter 7"
+  },
+  {
+    "id": "Q020",
+    "category": "chunk-boundary",
+    "question": "How does the author connect achieving success with maintaining and creating additional success?",
+    "expected_section": "Chapter 1-3"
+  },
+  {
+    "id": "Q021",
+    "category": "multi-part",
+    "question": "What are the four degrees of action, and which one does the author associate with exceptional success?",
+    "expected_section": "Chapter 7"
+  },
+  {
+    "id": "Q022",
+    "category": "multi-part",
+    "question": "What is the relationship between 10X goals and 10X actions according to the author?",
+    "expected_section": "Chapter 1-9"
+  },
+  {
+    "id": "Q023",
+    "category": "multi-part",
+    "question": "What does the author mean by \"average\" and why does he consider it a failing formula?",
+    "expected_section": "Chapter 8"
+  },
+  {
+    "id": "Q024",
+    "category": "multi-part",
+    "question": "What does the author say about fear, and how should fear influence action?",
+    "expected_section": "Chapter 16"
+  },
+  {
+    "id": "Q025",
+    "category": "multi-part",
+    "question": "What does the author identify as characteristics of successful people, and why does he believe these characteristics are attainable?",
+    "expected_section": "Chapter 22"
+  },
+  {
+    "id": "Q026",
+    "category": "difficult",
+    "question": "How does the author distinguish between taking normal action and taking massive action?",
+    "expected_section": "Chapter 7-8"
+  },
+  {
+    "id": "Q027",
+    "category": "difficult",
+    "question": "Why does the author believe people who retreat may actually be reacting to their interpretation of failure rather than failure itself?",
+    "expected_section": "Chapter 7"
+  },
+  {
+    "id": "Q028",
+    "category": "difficult",
+    "question": "How does the author's experience of building his first business illustrate his argument about estimating effort?",
+    "expected_section": "Chapter 2"
+  },
+  {
+    "id": "Q029",
+    "category": "difficult",
+    "question": "What does the author mean when he says that successful people continue creating new levels of success instead of relying on previous achievements?",
+    "expected_section": "Chapter 1-3"
+  },
+  {
+    "id": "Q030",
+    "category": "difficult",
+    "question": "How does the book connect responsibility, action, and success?",
+    "expected_section": "Chapter 4-23"
+  },
+  {
+    "id": "Q031",
+    "category": "unanswerable",
+    "question": "What does the author recommend as the best programming language for building AI systems?",
+    "expected_section": "NOT FOUND"
+  },
+  {
+    "id": "Q032",
+    "category": "unanswerable",
+    "question": "What embedding model does the author recommend for semantic search?",
+    "expected_section": "NOT FOUND"
+  },
+  {
+    "id": "Q033",
+    "category": "unanswerable",
+    "question": "What is the author's opinion on Qdrant?",
+    "expected_section": "NOT FOUND"
+  },
+  {
+    "id": "Q034",
+    "category": "unanswerable",
+    "question": "What does the author say about retrieval-augmented generation?",
+    "expected_section": "NOT FOUND"
+  },
+  {
+    "id": "Q035",
+    "category": "unanswerable",
+    "question": "What GPU does the author recommend for running Qwen3 8B?",
+    "expected_section": "NOT FOUND"
+  }
+]

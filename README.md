@@ -36,3 +36,23 @@ dependency. Commit 2 will selectively generalize proven M1 components.
 Planned phases: canonical model → PDF/M1 regression → Markdown → AST code →
 Git repositories → BM25 → hybrid/RRF → structural filtering → reranking →
 metadata filtering → incremental indexing → evaluation/retrieval forensics.
+
+
+## M1-derived retrieval foundation
+
+This work selectively absorbs proven M1 architecture into M2-owned abstractions:
+
+- text-layer `PdfAdapter` producing the canonical `Document`
+- M1-style recursive chunking
+- Qdrant index boundary
+- dense retrieval boundary
+- lightweight BM25 retrieval
+- Reciprocal Rank Fusion
+- structural eligibility filtering
+- lazy cross-encoder reranking
+- inspectable `RetrievalTrace`
+- M0 `/v1/generate` and `/v1/embed` client boundary
+- preserved 35-question M1 regression dataset
+
+M1 remains a separate repository and is not imported at runtime. No M1 source package,
+virtual environment, model weights, caches, or generated artifacts are included here.

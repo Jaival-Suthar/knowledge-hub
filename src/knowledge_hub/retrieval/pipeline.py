@@ -1,19 +1,44 @@
-from dataclasses import dataclass, field
+from __future__ import annotations
 
-from knowledge_hub.models import Chunk
-
-
-@dataclass
-class RetrievalTrace:
-    query: str
-    dense_results: list[Chunk] = field(default_factory=list)
-    bm25_results: list[Chunk] = field(default_factory=list)
-    fusion_results: list[Chunk] = field(default_factory=list)
-    filtered_results: list[Chunk] = field(default_factory=list)
-    reranked_results: list[Chunk] = field(default_factory=list)
-    final_evidence: list[Chunk] = field(default_factory=list)
+from knowledge_hub.retrieval.fusion import ReciprocalRankFusion
+from knowledge_hub.retrieval.reranking import CrossEncoderReranker
+from knowledge_hub.retrieval.structural import structural_eligible
+from knowledge_hub.retrieval.types import RetrievalTrace
 
 
 class RetrievalPipeline:
-    def search(self, query: str) -> RetrievalTrace:
-        return RetrievalTrace(query=query)
+    """Inspectable M2 retrieval pipeline: dense + BM25 -> RRF -> filter -> rerank."""
+
+    def __init__(
+        self, dense, sparse, reranker: CrossEncoderReranker | None = None
+    ) -> None:
+        self.dense = dense
+        self.sparse = sparse
+        self.reranker = reranker
+        self.fusion = ReciprocalRankFusion()
+
+    def search(
+        self,
+        query: str,
+        dense_k: int = 20,
+        sparse_k: int = 20,
+        rerank_k: int = 5,
+    ) -> RetrievalTrace:
+        trace = RetrievalTrace(query=query)
+        trace.dense_results = self.dense.search(query, dense_k)
+        trace.bm25_results = self.sparse.search(query, sparse_k)
+        trace.fusion_results = self.fusion.fuse(
+            [trace.dense_results, trace.bm25_results],
+            top_k=max(dense_k, sparse_k),
+        )
+        trace.filtered_results = [
+            item for item in trace.fusion_results if structural_eligible(item.chunk)
+        ]
+        if self.reranker is not None:
+            trace.reranked_results = self.reranker.rerank(
+                query, trace.filtered_results, rerank_k
+            )
+            trace.final_evidence = trace.reranked_results
+        else:
+            trace.final_evidence = trace.filtered_results[:rerank_k]
+        return trace
