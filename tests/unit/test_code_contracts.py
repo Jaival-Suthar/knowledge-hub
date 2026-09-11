@@ -89,7 +89,9 @@ def test_language_parser_can_be_implemented_without_ast_dependencies() -> None:
             )
 
     parser: LanguageParser = FakeParser()
-    code_file = CodeFile(Path("main.py"), "main.py", Language.PYTHON, "def main():\n", 12, "hash")
+    code_file = CodeFile(
+        Path("main.py"), "main.py", Language.PYTHON, "def main():\n", 12, "hash"
+    )
     result = parser.parse(code_file)
     assert result.symbols[0].name == "main"
     assert result.errors == ()

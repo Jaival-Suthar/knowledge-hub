@@ -15,8 +15,21 @@ from .contracts import (
     SourceValidationError,
     UnsupportedLanguageError,
 )
+from .discovery import (
+    DEFAULT_MAX_FILE_SIZE,
+    EXCLUDED_DIRECTORIES,
+    CodeDiscovery,
+    DiscoveryIssue,
+    DiscoveryReason,
+    DiscoveryResult,
+    DiscoveryStatistics,
+    classify_language,
+)
 
 __all__ = [
+    "DEFAULT_MAX_FILE_SIZE",
+    "EXCLUDED_DIRECTORIES",
+    "CodeDiscovery",
     "CodeFile",
     "CodeIngestionError",
     "CodeParseError",
@@ -25,9 +38,14 @@ __all__ = [
     "CodeSourceKind",
     "CodeSymbol",
     "CodeSymbolType",
+    "DiscoveryIssue",
+    "DiscoveryReason",
+    "DiscoveryResult",
+    "DiscoveryStatistics",
     "Language",
     "LanguageParser",
     "ParseError",
     "SourceValidationError",
     "UnsupportedLanguageError",
+    "classify_language",
 ]
