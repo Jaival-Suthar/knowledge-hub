@@ -61,3 +61,28 @@ def test_empty_sections_do_not_break_following_sections(tmp_path: Path) -> None:
     document = markdown_document(tmp_path, "# Empty\n\n## Child\n\nChild content")
     chunks = MarkdownChunker().chunk(document)
     assert [chunk.parent_structure for chunk in chunks] == ["Empty > Child"]
+
+
+def test_chunk_text_preserves_markdown_semantics(tmp_path: Path) -> None:
+    document = markdown_document(
+        tmp_path,
+        "# Fidelity\n\n"
+        "source-agnostic indexing and retrieval\n\n"
+        "Markdown files enter through the adapter\n\n"
+        "Document → Chunk → retrieval\n\n"
+        "`MarkdownAdapter` produces the canonical `Document`\n\n"
+        "```python\n    return {'value': 1}\n```\n\n"
+        "- first item\n- second item\n\n"
+        "> quoted text\n\n"
+        "| Name | Value |\n| --- | --- |\n| alpha | beta |",
+    )
+    content = "\n\n".join(chunk.content for chunk in MarkdownChunker().chunk(document))
+    assert "source-agnostic indexing and retrieval" in content
+    assert "indexingand retrieval" not in content
+    assert "Markdown files enter through the adapter" in content
+    assert "Document → Chunk → retrieval" in content
+    assert "`MarkdownAdapter` produces the canonical `Document`" in content
+    assert "```python\n    return {'value': 1}\n```" in content
+    assert "- first item\n- second item" in content
+    assert "> quoted text" in content
+    assert "| alpha | beta |" in content
