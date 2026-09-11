@@ -1,5 +1,6 @@
 """Contracts for source-aware code ingestion."""
 
+from .chunking import CodeChunker, SemanticCodeChunk
 from .contracts import (
     CodeFile,
     CodeIngestionError,
@@ -38,6 +39,7 @@ __all__ = [
     "DEFAULT_MAX_FILE_SIZE",
     "EXCLUDED_DIRECTORIES",
     "CParser",
+    "CodeChunker",
     "CodeDiscovery",
     "CodeFile",
     "CodeIngestionError",
@@ -58,6 +60,7 @@ __all__ = [
     "ParseError",
     "ParserRegistry",
     "PythonParser",
+    "SemanticCodeChunk",
     "SourceValidationError",
     "TypeScriptParser",
     "UnsupportedLanguageError",
