@@ -25,10 +25,19 @@ from .discovery import (
     DiscoveryStatistics,
     classify_language,
 )
+from .parsers import (
+    CParser,
+    CppParser,
+    JavaScriptParser,
+    ParserRegistry,
+    PythonParser,
+    TypeScriptParser,
+)
 
 __all__ = [
     "DEFAULT_MAX_FILE_SIZE",
     "EXCLUDED_DIRECTORIES",
+    "CParser",
     "CodeDiscovery",
     "CodeFile",
     "CodeIngestionError",
@@ -38,14 +47,19 @@ __all__ = [
     "CodeSourceKind",
     "CodeSymbol",
     "CodeSymbolType",
+    "CppParser",
     "DiscoveryIssue",
     "DiscoveryReason",
     "DiscoveryResult",
     "DiscoveryStatistics",
+    "JavaScriptParser",
     "Language",
     "LanguageParser",
     "ParseError",
+    "ParserRegistry",
+    "PythonParser",
     "SourceValidationError",
+    "TypeScriptParser",
     "UnsupportedLanguageError",
     "classify_language",
 ]
