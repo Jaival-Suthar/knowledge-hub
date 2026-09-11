@@ -7,18 +7,48 @@ from knowledge_hub.models import Chunk
 EXCLUDED_CONTENT_ROLES = frozenset({"navigation", "metadata", "reference"})
 
 _STRUCTURAL_LABELS = frozenset(
-    {"contents", "table of contents", "index", "glossary", "references", "reference",
-     "copyright", "publication information", "permissions", "legal disclaimer", "disclaimer"}
+    {
+        "contents",
+        "table of contents",
+        "index",
+        "glossary",
+        "references",
+        "reference",
+        "copyright",
+        "publication information",
+        "permissions",
+        "legal disclaimer",
+        "disclaimer",
+    }
 )
 _STRUCTURAL_WORDS = frozenset(
-    {"navigation", "metadata", "reference", "references", "index", "contents", "glossary",
-     "copyright", "permissions", "legal", "disclaimer", "front_matter", "back_matter"}
+    {
+        "navigation",
+        "metadata",
+        "reference",
+        "references",
+        "index",
+        "contents",
+        "glossary",
+        "copyright",
+        "permissions",
+        "legal",
+        "disclaimer",
+        "front_matter",
+        "back_matter",
+    }
 )
 _LEGAL_PATTERNS = (
-    r"all rights reserved", r"copyright clearance center",
-    r"no part of this .* may be reproduced", r"may not be reproduced",
-    r"reproduction in any form", r"permission to reproduce", r"published by",
-    r"first published", r"isbn(?:[-\s]|\d)", r"library of congress",
+    r"all rights reserved",
+    r"copyright clearance center",
+    r"no part of this .* may be reproduced",
+    r"may not be reproduced",
+    r"reproduction in any form",
+    r"permission to reproduce",
+    r"published by",
+    r"first published",
+    r"isbn(?:[-\s]|\d)",
+    r"library of congress",
 )
 
 
@@ -27,8 +57,13 @@ def _normal(value: object) -> str:
 
 
 def _field_values(chunk: Chunk) -> list[str]:
-    values = [chunk.structural_type, chunk.parent_structure, chunk.provenance.section,
-              *chunk.metadata.keys(), *chunk.metadata.values()]
+    values = [
+        chunk.structural_type,
+        chunk.parent_structure,
+        chunk.provenance.section,
+        *chunk.metadata.keys(),
+        *chunk.metadata.values(),
+    ]
     return [_normal(value) for value in values if _normal(value)]
 
 
@@ -54,7 +89,10 @@ def _is_contents(chunk: Chunk, content: str) -> bool:
 def _is_legal_metadata(content: str, parent: str) -> bool:
     matches = sum(bool(re.search(pattern, content)) for pattern in _LEGAL_PATTERNS)
     copyright_signal = bool(re.search(r"(?:©|\bcopyright\b)\s*(?:\d{4}|by\b)", content))
-    section_signal = any(term in parent for term in ("copyright", "publication", "permissions", "legal", "disclaimer"))
+    section_signal = any(
+        term in parent
+        for term in ("copyright", "publication", "permissions", "legal", "disclaimer")
+    )
     # A single mention of copyright in ordinary prose is intentionally insufficient.
     return matches >= 2 or (copyright_signal and (matches >= 1 or section_signal))
 
@@ -64,7 +102,10 @@ def _looks_like_index(content: str) -> bool:
     if len(lines) < 8:
         return False
     short_lines = sum(len(line.split()) <= 12 for line in lines)
-    entry_lines = sum(bool(re.match(r"^[A-Za-z][A-Za-z'’ -]{1,45}(?:,|\.{2,}|\s+\d|$)", line)) for line in lines)
+    entry_lines = sum(
+        bool(re.match(r"^[A-Za-z][A-Za-z'’ -]{1,45}(?:,|\.{2,}|\s+\d|$)", line))
+        for line in lines
+    )
     # Index pages are lists of compact entries, unlike paragraph-oriented prose.
     return short_lines / len(lines) >= 0.72 and entry_lines / len(lines) >= 0.55
 
@@ -87,11 +128,16 @@ def classify_content_role(chunk: Chunk) -> str:
     parent = _normal(chunk.parent_structure)
 
     if _has_structural_metadata(chunk) or _is_contents(chunk, content):
-        if any(term in parent for term in ("copyright", "publication", "permission", "legal")):
+        if any(
+            term in parent
+            for term in ("copyright", "publication", "permission", "legal")
+        ):
             return "metadata"
         if parent in {"glossary", "reference", "references"}:
             return "reference"
-        if parent in {"index", "contents", "table of contents"} or _is_contents(chunk, content):
+        if parent in {"index", "contents", "table of contents"} or _is_contents(
+            chunk, content
+        ):
             return "navigation"
     if _is_legal_metadata(content_flat, parent):
         return "metadata"

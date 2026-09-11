@@ -72,3 +72,38 @@ class RecursiveChunker:
         if current:
             output.append(current)
         return output
+
+    def _split_preserving(self, text: str) -> list[str]:
+        """Split while retaining source whitespace and block formatting."""
+        source = text.strip()
+        if len(source) <= self.max_chars:
+            return [source]
+
+        blocks = re.split(r"(\n\s*\n)", source)
+        pieces: list[str] = []
+        current = ""
+        for block in blocks:
+            candidate = f"{current}{block}"
+            if current and len(candidate) > self.max_chars:
+                pieces.extend(self._hard_split_preserving(current))
+                current = block
+            else:
+                current = candidate
+        if current:
+            pieces.extend(self._hard_split_preserving(current))
+        return [piece for piece in pieces if piece.strip()]
+
+    def _hard_split_preserving(self, text: str) -> list[str]:
+        pieces: list[str] = []
+        remaining = text
+        while len(remaining) > self.max_chars:
+            cut = remaining.rfind(" ", 1, self.max_chars + 1)
+            if cut <= 0:
+                cut = remaining.rfind("\n", 1, self.max_chars + 1)
+            if cut <= 0:
+                cut = self.max_chars
+            pieces.append(remaining[:cut])
+            remaining = remaining[cut:]
+        if remaining:
+            pieces.append(remaining)
+        return pieces
