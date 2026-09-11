@@ -1,5 +1,11 @@
 """Contracts for source-aware code ingestion."""
 
+from .canonical import (
+    canonicalize_code,
+    document_id_for,
+    to_canonical_chunks,
+    to_canonical_document,
+)
 from .chunking import CodeChunker, SemanticCodeChunk
 from .contracts import (
     CodeFile,
@@ -69,5 +75,9 @@ __all__ = [
     "UnsupportedLanguageError",
     "ZipIngestionError",
     "ZipLimits",
+    "canonicalize_code",
     "classify_language",
+    "document_id_for",
+    "to_canonical_chunks",
+    "to_canonical_document",
 ]
