@@ -103,7 +103,7 @@ class LanguageParser(Protocol):
 
 
 class CodeIngestionError(Exception):
-    """Base error for future code-source validation and parsing operations."""
+    """Base error for code-source validation and ingestion failures."""
 
 
 class SourceValidationError(CodeIngestionError):
@@ -116,3 +116,7 @@ class UnsupportedLanguageError(CodeIngestionError):
 
 class ParseError(CodeIngestionError):
     pass
+
+
+class ZipIngestionError(CodeIngestionError):
+    """Controlled failure for invalid, unsafe, or over-limit ZIP input."""

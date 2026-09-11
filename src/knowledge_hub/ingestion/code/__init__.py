@@ -15,6 +15,7 @@ from .contracts import (
     ParseError,
     SourceValidationError,
     UnsupportedLanguageError,
+    ZipIngestionError,
 )
 from .discovery import (
     DEFAULT_MAX_FILE_SIZE,
@@ -34,6 +35,7 @@ from .parsers import (
     PythonParser,
     TypeScriptParser,
 )
+from .zip_ingestion import SecureZipIngestor, ZipLimits
 
 __all__ = [
     "DEFAULT_MAX_FILE_SIZE",
@@ -60,9 +62,12 @@ __all__ = [
     "ParseError",
     "ParserRegistry",
     "PythonParser",
+    "SecureZipIngestor",
     "SemanticCodeChunk",
     "SourceValidationError",
     "TypeScriptParser",
     "UnsupportedLanguageError",
+    "ZipIngestionError",
+    "ZipLimits",
     "classify_language",
 ]
