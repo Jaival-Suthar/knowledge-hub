@@ -16,7 +16,7 @@ class MarkdownChunker:
         sections = self._sections(document)
         output: list[Chunk] = []
         for section_index, section in enumerate(sections):
-            pieces = self._recursive._split("\n\n".join(section["lines"]))
+            pieces = self._recursive._split_preserving("\n\n".join(section["lines"]))
             for part_index, content in enumerate(pieces):
                 content = content.strip()
                 if not content:
