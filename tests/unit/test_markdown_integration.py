@@ -11,7 +11,9 @@ def test_real_markdown_corpus_enters_canonical_flow() -> None:
     corpus = Path("data/raw/markdown")
     adapter = MarkdownAdapter()
     documents = [adapter.extract(path) for path in sorted(corpus.iterdir())]
-    chunks = [chunk for document in documents for chunk in MarkdownChunker().chunk(document)]
+    chunks = [
+        chunk for document in documents for chunk in MarkdownChunker().chunk(document)
+    ]
 
     assert len(documents) == 4
     assert sum(len(document.structure["blocks"]) for document in documents) >= 12
@@ -35,7 +37,9 @@ class _Retriever:
 def test_pdf_and_markdown_chunks_use_same_retrieval_path(tmp_path: Path) -> None:
     markdown_path = tmp_path / "guide.md"
     markdown_path.write_text("# Guide\n\nShared canonical chunk.", encoding="utf-8")
-    markdown_chunk = MarkdownChunker().chunk(MarkdownAdapter().extract(markdown_path))[0]
+    markdown_chunk = MarkdownChunker().chunk(MarkdownAdapter().extract(markdown_path))[
+        0
+    ]
     pdf_like = markdown_chunk.model_copy(update={"source_type": SourceType.PDF})
 
     markdown_result = RankedChunk(markdown_chunk, 1.0, 1, "dense")
@@ -43,7 +47,9 @@ def test_pdf_and_markdown_chunks_use_same_retrieval_path(tmp_path: Path) -> None
     markdown_trace = RetrievalPipeline(
         _Retriever(markdown_result), _Retriever(markdown_result)
     ).search("shared")
-    pdf_trace = RetrievalPipeline(_Retriever(pdf_result), _Retriever(pdf_result)).search("shared")
+    pdf_trace = RetrievalPipeline(
+        _Retriever(pdf_result), _Retriever(pdf_result)
+    ).search("shared")
 
     assert markdown_trace.final_evidence[0].chunk.source_type is SourceType.MARKDOWN
     assert pdf_trace.final_evidence[0].chunk.source_type is SourceType.PDF

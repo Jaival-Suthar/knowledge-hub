@@ -54,7 +54,7 @@ def _parse_blocks(content: str) -> list[dict[str, object]]:
             index += 1
             continue
 
-        heading = re.match(r"^(#{1,6})\s+(.+?)\s*#*\s*$", line)
+        heading = re.match(r"^(#{1,6})\s+(.+?)(?:\s+#+)?\s*$", line)
         if heading:
             level = len(heading.group(1))
             text = heading.group(2).strip()
@@ -89,13 +89,22 @@ def _parse_blocks(content: str) -> list[dict[str, object]]:
 def _block_end(lines: list[str], start: int) -> tuple[str, int]:
     line = lines[start]
     if line.lstrip().startswith("```") or line.lstrip().startswith("~~~"):
-        fence = line.lstrip()[:3]
+        opening = re.match(r"^\s*(`{3,}|~{3,})(?:[^`~]*)$", line)
+        if opening is None:
+            return _paragraph_end(lines, start)
+        fence = opening.group(1)
+        marker = fence[0]
+        length = len(fence)
         end = start + 1
-        while end < len(lines) and not lines[end].lstrip().startswith(fence):
+        while end < len(lines) and not _is_closing_fence(lines[end], marker, length):
             end += 1
         return "code_block", min(end + 1, len(lines))
     if re.match(r"^\s*(?:[-+*]|\d+[.)])\s+", line):
-        return _consecutive(lines, start, lambda value: bool(re.match(r"^\s*(?:[-+*]|\d+[.)])\s+", value)))
+        return _consecutive(
+            lines,
+            start,
+            lambda value: bool(re.match(r"^\s*(?:[-+*]|\d+[.)])\s+", value)),
+        )
     if line.lstrip().startswith(">"):
         return _consecutive(lines, start, lambda value: value.lstrip().startswith(">"))
     if _is_table_line(line):
@@ -110,11 +119,18 @@ def _consecutive(lines: list[str], start: int, predicate) -> tuple[str, int]:
     end = start
     while end < len(lines) and lines[end].strip() and predicate(lines[end]):
         end += 1
-    return ("list" if re.match(r"^\s*(?:[-+*]|\d+[.)])\s+", lines[start]) else "blockquote", end)
+    return (
+        "list" if re.match(r"^\s*(?:[-+*]|\d+[.)])\s+", lines[start]) else "blockquote",
+        end,
+    )
 
 
 def _is_table_line(line: str) -> bool:
     return "|" in line and line.strip().startswith("|")
+
+
+def _is_closing_fence(line: str, marker: str, minimum_length: int) -> bool:
+    return bool(re.match(rf"^\s*{re.escape(marker)}{{{minimum_length},}}\s*$", line))
 
 
 def _paragraph_end(lines: list[str], start: int) -> tuple[str, int]:

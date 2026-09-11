@@ -10,7 +10,9 @@ class MarkdownChunker:
     """Chunk Markdown sections while retaining their heading context."""
 
     def __init__(self, max_chars: int = 4000, overlap_chars: int = 400) -> None:
-        self._recursive = RecursiveChunker(max_chars=max_chars, overlap_chars=overlap_chars)
+        self._recursive = RecursiveChunker(
+            max_chars=max_chars, overlap_chars=overlap_chars
+        )
 
     def chunk(self, document: Document) -> list[Chunk]:
         sections = self._sections(document)
@@ -75,7 +77,9 @@ class MarkdownChunker:
                 current = {
                     "heading_path": path,
                     "heading_level": int(block.get("level", 0)),
-                    "lines": [f"{'#' * int(block.get('level', 0))} {block.get('text', '')}"],
+                    "lines": [
+                        f"{'#' * int(block.get('level', 0))} {block.get('text', '')}"
+                    ],
                     "block_types": ["heading"],
                 }
                 sections.append(current)

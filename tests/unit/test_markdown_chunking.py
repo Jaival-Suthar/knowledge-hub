@@ -39,16 +39,23 @@ def test_chunks_handle_body_before_headings_and_block_types(tmp_path: Path) -> N
     example = next(chunk for chunk in chunks if chunk.parent_structure == "Examples")
     assert example.structural_type == "section"
     assert set(example.metadata["block_types"].split(",")) >= {
-        "code_block", "list", "table", "blockquote"
+        "code_block",
+        "list",
+        "table",
+        "blockquote",
     }
 
 
 def test_large_section_splits_without_losing_heading_context(tmp_path: Path) -> None:
     body = " ".join(f"token-{index}" for index in range(300))
-    document = markdown_document(tmp_path, f"# Authentication\n\n## JWT\n\n### Refresh Tokens\n\n{body}")
+    document = markdown_document(
+        tmp_path, f"# Authentication\n\n## JWT\n\n### Refresh Tokens\n\n{body}"
+    )
     chunks = MarkdownChunker(max_chars=120, overlap_chars=10).chunk(document)
     refresh_chunks = [
-        chunk for chunk in chunks if chunk.parent_structure == "Authentication > JWT > Refresh Tokens"
+        chunk
+        for chunk in chunks
+        if chunk.parent_structure == "Authentication > JWT > Refresh Tokens"
     ]
     assert len(refresh_chunks) > 1
     assert all(

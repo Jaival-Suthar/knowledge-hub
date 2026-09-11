@@ -4,7 +4,9 @@ from knowledge_hub.ingestion.adapters.markdown import MarkdownAdapter
 from knowledge_hub.models import SourceType
 
 
-def write_markdown(tmp_path: Path, name: str = "guide.md", content: str = "# Guide\n\nBody") -> Path:
+def write_markdown(
+    tmp_path: Path, name: str = "guide.md", content: str = "# Guide\n\nBody"
+) -> Path:
     path = tmp_path / name
     path.write_text(content, encoding="utf-8")
     return path
@@ -41,7 +43,11 @@ def test_markdown_structure_and_heading_paths(tmp_path: Path) -> None:
         "```python\nprint('x')\n```\n\n- one\n- two\n\n> quote\n\n"
         "| Name | Value |\n| --- | --- |\n| A | 1 |"
     )
-    blocks = MarkdownAdapter().extract(write_markdown(tmp_path, content=content)).structure["blocks"]
+    blocks = (
+        MarkdownAdapter()
+        .extract(write_markdown(tmp_path, content=content))
+        .structure["blocks"]
+    )
     headings = [block for block in blocks if block["type"] == "heading"]
     assert [(item["level"], item["heading_path"]) for item in headings] == [
         (1, ["A"]),
@@ -52,5 +58,33 @@ def test_markdown_structure_and_heading_paths(tmp_path: Path) -> None:
     ]
     assert blocks[0]["heading_path"] == []
     assert {block["type"] for block in blocks} >= {
-        "code_block", "list", "table", "blockquote", "paragraph"
+        "code_block",
+        "list",
+        "table",
+        "blockquote",
+        "paragraph",
     }
+
+
+def test_heading_text_preserves_trailing_hash_character(tmp_path: Path) -> None:
+    blocks = (
+        MarkdownAdapter()
+        .extract(write_markdown(tmp_path, content="# C#\n\n### Heading ###"))
+        .structure["blocks"]
+    )
+    assert [block["text"] for block in blocks if block["type"] == "heading"] == [
+        "C#",
+        "Heading",
+    ]
+
+
+def test_fence_like_content_does_not_end_code_block(tmp_path: Path) -> None:
+    content = "```python\n```python\nreturn 1\n```\n\nAfter"
+    blocks = (
+        MarkdownAdapter()
+        .extract(write_markdown(tmp_path, content=content))
+        .structure["blocks"]
+    )
+    assert blocks[0]["type"] == "code_block"
+    assert blocks[0]["text"] == content.split("\n\n")[0]
+    assert blocks[1]["text"] == "After"
