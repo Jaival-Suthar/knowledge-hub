@@ -1,0 +1,83 @@
+"""Contracts for source-aware code ingestion."""
+
+from .canonical import (
+    canonicalize_code,
+    document_id_for,
+    to_canonical_chunks,
+    to_canonical_document,
+)
+from .chunking import CodeChunker, SemanticCodeChunk
+from .contracts import (
+    CodeFile,
+    CodeIngestionError,
+    CodeParseError,
+    CodeParseResult,
+    CodeSource,
+    CodeSourceKind,
+    CodeSymbol,
+    CodeSymbolType,
+    Language,
+    LanguageParser,
+    ParseError,
+    SourceValidationError,
+    UnsupportedLanguageError,
+    ZipIngestionError,
+)
+from .discovery import (
+    DEFAULT_MAX_FILE_SIZE,
+    EXCLUDED_DIRECTORIES,
+    CodeDiscovery,
+    DiscoveryIssue,
+    DiscoveryReason,
+    DiscoveryResult,
+    DiscoveryStatistics,
+    classify_language,
+)
+from .parsers import (
+    CParser,
+    CppParser,
+    JavaScriptParser,
+    ParserRegistry,
+    PythonParser,
+    TypeScriptParser,
+)
+from .zip_ingestion import SecureZipIngestor, ZipLimits
+
+__all__ = [
+    "DEFAULT_MAX_FILE_SIZE",
+    "EXCLUDED_DIRECTORIES",
+    "CParser",
+    "CodeChunker",
+    "CodeDiscovery",
+    "CodeFile",
+    "CodeIngestionError",
+    "CodeParseError",
+    "CodeParseResult",
+    "CodeSource",
+    "CodeSourceKind",
+    "CodeSymbol",
+    "CodeSymbolType",
+    "CppParser",
+    "DiscoveryIssue",
+    "DiscoveryReason",
+    "DiscoveryResult",
+    "DiscoveryStatistics",
+    "JavaScriptParser",
+    "Language",
+    "LanguageParser",
+    "ParseError",
+    "ParserRegistry",
+    "PythonParser",
+    "SecureZipIngestor",
+    "SemanticCodeChunk",
+    "SourceValidationError",
+    "TypeScriptParser",
+    "UnsupportedLanguageError",
+    "ZipIngestionError",
+    "ZipLimits",
+    "canonicalize_code",
+    "classify_language",
+    "document_id_for",
+    "to_canonical_chunks",
+    "to_canonical_document",
+]
