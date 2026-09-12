@@ -68,3 +68,31 @@ This work selectively absorbs proven M1 architecture into M2-owned abstractions:
 
 M1 remains a separate repository and is not imported at runtime. No M1 source package,
 virtual environment, model weights, caches, or generated artifacts are included here.
+
+## Code ingestion
+
+Code files enter through safe codebase discovery and Tree-sitter parsing, producing AST symbols that are converted into source-aware semantic chunks and canonical `Document` / `Chunk` objects. Code ingestion supports TypeScript, JavaScript, Python, C, and C++ and can ingest both directories and ZIP codebases.
+
+The ZIP ingestion path validates archive members before extraction and rejects unsafe paths, symlinks, encrypted entries, and archives exceeding configured file/count/size limits.
+
+```
+Code / ZIP → CodeDiscovery → Tree-sitter → AST Symbols → Semantic Chunks → Canonical Documents / Chunks
+```
+
+Code chunks preserve symbol identity, language, source location, parent structure, content hashes, and provenance. Oversized symbols are handled deterministically.
+
+A developer inspection CLI provides an inspectable path from source acquisition through canonicalization for full codebases or individual files.
+
+The implementation was validated against the real PerfEngine codebase:
+
+- 1,928 ZIP members
+- 252 supported source files
+- 247 TypeScript files
+- 5 JavaScript files
+- 730 AST symbols
+- 730 semantic chunks
+- 252 canonical documents
+- 730 canonical chunks
+- 70 recoverable parser errors
+
+Code ingestion is intentionally limited to acquisition, parsing, semantic chunking, and canonicalization. Git/GitHub ingestion, embeddings, indexing changes, BM25, hybrid retrieval, reranking, metadata retrieval, UI, OCR, and agents remain separate work.
