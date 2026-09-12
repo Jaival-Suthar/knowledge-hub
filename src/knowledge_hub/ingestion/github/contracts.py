@@ -1,7 +1,9 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from collections.abc import Callable
+from dataclasses import dataclass, field
 from pathlib import Path
+from typing import Self
 
 
 class GitHubRepositoryError(Exception):
@@ -53,6 +55,26 @@ class GitHubSnapshot:
     repository: GitHubRepository
     commit_sha: str
     root_path: Path
+    _cleanup_callback: Callable[[], None] | None = field(
+        default=None,
+        repr=False,
+        compare=False,
+    )
 
     def __post_init__(self) -> None:
         _require_text(self.commit_sha, "commit_sha")
+
+    def cleanup(self) -> None:
+        """Release the temporary storage owned by this snapshot."""
+        if self._cleanup_callback is not None:
+            self._cleanup_callback()
+
+    def close(self) -> None:
+        """Alias for :meth:`cleanup` for context-manager-style callers."""
+        self.cleanup()
+
+    def __enter__(self) -> Self:
+        return self
+
+    def __exit__(self, *_: object) -> None:
+        self.cleanup()
