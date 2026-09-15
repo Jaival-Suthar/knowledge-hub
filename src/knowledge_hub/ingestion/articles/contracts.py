@@ -60,10 +60,10 @@ class ArticleSection:
 class Article:
     """Source-neutral article data before canonical conversion."""
 
-    article_id: str
     source: str
     source_uri: str
-    title: str
+    article_id: str | None = None
+    title: str | None = None
     author: str | None = None
     published_at: datetime | None = None
     updated_at: datetime | None = None
