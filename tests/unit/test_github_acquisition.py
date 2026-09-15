@@ -311,9 +311,7 @@ def test_invalid_cloned_repository_is_cleaned_up(
         GitHubRepositoryError,
         match="valid repository",
     ):
-        acquire_github_repository(
-            GitHubRepositorySource(url=REPOSITORY_URL)
-        )
+        acquire_github_repository(GitHubRepositorySource(url=REPOSITORY_URL))
 
     assert created
     assert not created[0].exists()
