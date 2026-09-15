@@ -33,7 +33,7 @@ def acquire_github_repository(
     root_path = Path(temporary_directory.name) / repository.name
 
     try:
-        clone_command = ["git", "clone"]
+        clone_command = ["git", "clone", "--depth", "1"]
         if source.ref is not None:
             clone_command.extend(["--branch", source.ref])
         clone_command.extend(["--", repository.url, str(root_path)])

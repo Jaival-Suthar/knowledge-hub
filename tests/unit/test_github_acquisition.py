@@ -90,11 +90,20 @@ def test_acquisition_resolves_explicit_ref_and_can_clean_up(
     assert snapshot.commit_sha == COMMIT_SHA
     assert not snapshot.root_path.resolve().is_relative_to(Path.cwd().resolve())
 
-    clone_call, clone_options = calls[0]
-    assert clone_call[:5] == ["git", "clone", "--branch", "release/v1", "--"]
+    clone_call, _ = calls[0]
+    assert clone_call[:7] == [
+        "git",
+        "clone",
+        "--depth",
+        "1",
+        "--branch",
+        "release/v1",
+        "--",
+    ]
     assert clone_call[-2] == REPOSITORY_URL
-    assert clone_options["timeout"] == 7
-    assert all(options.get("shell") is not True for _, options in calls)
+    assert all(options["timeout"] == 7 for _, options in calls)
+    assert all(options.get("shell", False) is False for _, options in calls)
+    assert all(isinstance(command, list) for command, _ in calls)
     assert any(command[-2:] == ["rev-parse", "HEAD"] for command, _ in calls)
 
     root_path = snapshot.root_path
@@ -114,7 +123,7 @@ def test_acquisition_records_actual_default_ref_without_assuming_main(
 
     assert snapshot.repository.ref == "trunk"
     assert snapshot.repository.commit_sha == snapshot.commit_sha
-    assert calls[0][0][:3] == ["git", "clone", "--"]
+    assert calls[0][0][:5] == ["git", "clone", "--depth", "1", "--"]
     assert any(
         command[-3:] == ["symbolic-ref", "--short", "HEAD"] for command, _ in calls
     )
@@ -208,6 +217,106 @@ def test_invalid_repository_and_ref_are_rejected_before_git(
         )
 
     assert not calls
+
+
+@pytest.mark.parametrize("timeout", [0, -1, -0.5])
+def test_invalid_timeout_is_rejected(
+    monkeypatch: pytest.MonkeyPatch,
+    timeout: float,
+) -> None:
+    calls: list[object] = []
+
+    def run(*args: object, **kwargs: object) -> None:
+        calls.append((args, kwargs))
+
+    monkeypatch.setattr(acquisition.subprocess, "run", run)
+
+    with pytest.raises(ValueError, match="timeout must be positive"):
+        acquire_github_repository(
+            GitHubRepositorySource(url=REPOSITORY_URL),
+            timeout=timeout,
+        )
+
+    assert not calls
+
+
+def test_blank_ref_is_rejected_before_git(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    calls: list[object] = []
+
+    def run(*args: object, **kwargs: object) -> None:
+        calls.append((args, kwargs))
+
+    monkeypatch.setattr(acquisition.subprocess, "run", run)
+
+    with pytest.raises(
+        GitHubRepositoryError,
+        match="ref must be a non-empty string",
+    ):
+        acquire_github_repository(
+            GitHubRepositorySource(
+                url=REPOSITORY_URL,
+                ref="   ",
+            )
+        )
+
+    assert not calls
+
+
+def test_null_byte_ref_is_rejected_before_git(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    calls: list[object] = []
+
+    def run(*args: object, **kwargs: object) -> None:
+        calls.append((args, kwargs))
+
+    monkeypatch.setattr(acquisition.subprocess, "run", run)
+
+    with pytest.raises(
+        GitHubRepositoryError,
+        match="invalid null character",
+    ):
+        acquire_github_repository(
+            GitHubRepositorySource(
+                url=REPOSITORY_URL,
+                ref="release\x00/v1",
+            )
+        )
+
+    assert not calls
+
+
+def test_invalid_cloned_repository_is_cleaned_up(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    created = force_temp_directory(monkeypatch, tmp_path)
+
+    def fake_run(
+        arguments: list[str],
+        **kwargs: object,
+    ) -> subprocess.CompletedProcess[str]:
+        if arguments[1:2] == ["clone"]:
+            target = Path(arguments[-1])
+            target.mkdir(parents=True)
+            return subprocess.CompletedProcess(arguments, 0, "", "")
+
+        raise AssertionError(f"unexpected Git command: {arguments}")
+
+    monkeypatch.setattr(acquisition.subprocess, "run", fake_run)
+
+    with pytest.raises(
+        GitHubRepositoryError,
+        match="valid repository",
+    ):
+        acquire_github_repository(
+            GitHubRepositorySource(url=REPOSITORY_URL)
+        )
+
+    assert created
+    assert not created[0].exists()
 
 
 def test_snapshot_cleanup_is_explicit_and_idempotent(
