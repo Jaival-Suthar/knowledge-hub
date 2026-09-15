@@ -46,8 +46,7 @@ def to_canonical_document(article: Article) -> Document:
         provenance=_document_provenance(article),
         structure={
             "heading_paths": [
-                list(section.heading_path)
-                for section in article.sections
+                list(section.heading_path) for section in article.sections
             ]
         },
     )
@@ -81,9 +80,7 @@ def article_chunk_to_canonical(
         content=article_chunk.content,
         source_type=article_chunk.source_type,
         source_uri=article_chunk.source_uri,
-        timestamp=_timestamp(
-            article_chunk.updated_at or article_chunk.published_at
-        ),
+        timestamp=_timestamp(article_chunk.updated_at or article_chunk.published_at),
         content_role=article_chunk.content_type,
         structural_type=article_chunk.content_type,
         parent_structure=(
@@ -180,24 +177,16 @@ def _validate_chunk_boundary(
 ) -> None:
     """Validate invariants required for ArticleChunk → Chunk conversion."""
     if not article_chunk.source_uri:
-        raise ArticleCanonicalizationError(
-            "article chunk source_uri is required"
-        )
+        raise ArticleCanonicalizationError("article chunk source_uri is required")
 
     if not article_chunk.chunk_id:
-        raise ArticleCanonicalizationError(
-            "article chunk chunk_id is required"
-        )
+        raise ArticleCanonicalizationError("article chunk chunk_id is required")
 
     if not article_chunk.content_hash:
-        raise ArticleCanonicalizationError(
-            "article chunk content_hash is required"
-        )
+        raise ArticleCanonicalizationError("article chunk content_hash is required")
 
     if not article_chunk.content:
-        raise ArticleCanonicalizationError(
-            "article chunk content is required"
-        )
+        raise ArticleCanonicalizationError("article chunk content is required")
 
     if document.source_uri != article_chunk.source_uri:
         raise ArticleCanonicalizationError(
