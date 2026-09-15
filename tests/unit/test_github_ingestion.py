@@ -74,6 +74,8 @@ def test_ingestion_composes_existing_pipeline_and_returns_canonical_output(
     assert result.chunks[0].source_type is SourceType.GITHUB
     assert result.chunks[0].provenance.repository == "example/project"
     assert not discovery_result.snapshot.root_path.exists()
+    assert result.documents[0].content == result.files[0].content
+    assert result.chunks[0].content == result.semantic_chunks[0].content
 
 
 def test_acquisition_or_discovery_failure_propagates_before_parsing(
@@ -113,6 +115,30 @@ def test_parser_failure_cleans_up_and_propagates(
         ingest_github_repository(
             REPOSITORY_URL,
             parser_registry=FailingRegistry(),  # type: ignore[arg-type]
+        )
+
+    assert not discovery_result.snapshot.root_path.exists()
+
+
+def test_chunker_failure_cleans_up_and_propagates(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    discovery_result, _temporary_directory = make_discovery_result(tmp_path)
+    monkeypatch.setattr(
+        github_ingestion,
+        "discover_github_repository",
+        lambda source, discovery=None: discovery_result,
+    )
+
+    class FailingChunker:
+        def chunk(self, code_file: object, parse_result: object) -> object:
+            raise RuntimeError("chunking failed")
+
+    with pytest.raises(RuntimeError, match="chunking failed"):
+        ingest_github_repository(  # type: ignore[arg-type]
+            REPOSITORY_URL,
+            chunker=FailingChunker(),
         )
 
     assert not discovery_result.snapshot.root_path.exists()
