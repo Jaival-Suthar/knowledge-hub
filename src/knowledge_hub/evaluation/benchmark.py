@@ -135,6 +135,10 @@ class _HybridEvaluationAdapter:
         self.retriever = retriever
         self.candidate_k = candidate_k
 
+    @property
+    def last_timing(self):
+        return self.retriever.last_timing
+
     def search(self, query: str, top_k: int) -> list[RankedChunk]:
         return self.retriever.search(
             query,
