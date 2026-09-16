@@ -63,9 +63,10 @@ class EvaluationReport:
     metrics: RetrievalMetrics
     by_category: dict[str, RetrievalMetrics]
     queries: tuple[QueryEvaluation, ...]
+    rrf_k: int | None = None
 
     def as_dict(self) -> dict[str, object]:
-        return {
+        report = {
             "retriever": self.retriever,
             "metrics": self.metrics.as_dict(),
             "by_category": {
@@ -74,6 +75,9 @@ class EvaluationReport:
             },
             "queries": [query.as_dict() for query in self.queries],
         }
+        if self.rrf_k is not None:
+            report["rrf_k"] = self.rrf_k
+        return report
 
 
 class Searcher:

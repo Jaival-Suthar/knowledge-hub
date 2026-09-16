@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from dataclasses import replace
 from pathlib import Path
 from typing import Any
 
@@ -24,6 +25,7 @@ DEFAULT_PDF = Path("data/raw/The 10X Rule.pdf")
 DEFAULT_REPORT_DIR = Path("evaluation/reports")
 DEFAULT_TOP_K = 20
 DEFAULT_HYBRID_CANDIDATE_K = 20
+DEFAULT_RRF_K = 60
 
 
 def load_questions(
@@ -148,7 +150,7 @@ def run_hybrid_experiment(
     qdrant_url: str,
     collection: str,
     candidate_k: int = DEFAULT_HYBRID_CANDIDATE_K,
-    rrf_k: int = 60,
+    rrf_k: int = DEFAULT_RRF_K,
 ):
     dense_retriever = _build_dense_retriever(
         qdrant_url=qdrant_url,
@@ -161,12 +163,13 @@ def run_hybrid_experiment(
         rrf_k=rrf_k,
     )
 
-    return evaluate_retriever(
+    report = evaluate_retriever(
         _HybridEvaluationAdapter(hybrid_retriever, candidate_k),
         chunks,
         questions,
         name="hybrid",
     )
+    return replace(report, rrf_k=rrf_k)
 
 
 def write_report(
@@ -186,6 +189,13 @@ def write_report(
         + "\n",
         encoding="utf-8",
     )
+
+
+def _positive_int(value: str) -> int:
+    parsed = int(value)
+    if parsed <= 0:
+        raise argparse.ArgumentTypeError("rrf-k must be a positive integer")
+    return parsed
 
 
 def main() -> int:
@@ -224,6 +234,12 @@ def main() -> int:
         default="knowledge_hub",
     )
 
+    parser.add_argument(
+        "--rrf-k",
+        type=_positive_int,
+        default=DEFAULT_RRF_K,
+    )
+
     args = parser.parse_args()
 
     chunks = load_pdf_chunks(args.pdf)
@@ -248,6 +264,7 @@ def main() -> int:
             qdrant_url=args.qdrant_url,
             collection=args.collection,
             candidate_k=DEFAULT_HYBRID_CANDIDATE_K,
+            rrf_k=args.rrf_k,
         )
 
     output = args.output or DEFAULT_REPORT_DIR / f"{args.mode}.json"
