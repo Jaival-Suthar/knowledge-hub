@@ -1,0 +1,1042 @@
+[
+  {
+    "id": "Q001",
+    "question": "What is the 10X Rule?",
+    "expected_answer_contains": "10 times the thoughts and 10 times the actions",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "10X Rule"
+    ],
+    "gold_answer": "The 10X Rule means setting targets at 10 times what you think you want and taking 10 times the action you think they require.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 12,
+        "chunk_id": "dfeb79b5847e186cf39e808f1ac7110b64db26cc94559c5da9ca36e034151c7c",
+        "text_span": "The 10X Rule is the one thing that will guarantee that you will get what you want in amounts greater than you ever thought imaginable.",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": [
+      {
+        "page_number": 16,
+        "chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+        "text_span": "You must set targets that are 10 times what you think you want and then do 10 times what you think it will take",
+        "relevance": "acceptable",
+        "grade": 2
+      }
+    ]
+  },
+  {
+    "id": "Q002",
+    "question": "What are the two parts of the 10X Rule?",
+    "expected_answer_contains": "10 times the thoughts and 10 times the actions",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "10 times",
+      "thoughts",
+      "actions"
+    ],
+    "gold_answer": "The two parts are thinking at 10X levels and taking 10X levels of action.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 16,
+        "chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+        "text_span": "10 times the thoughts and 10 times the actions of other people.",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": []
+  },
+  {
+    "id": "Q003",
+    "question": "What are the four degrees of action?",
+    "expected_answer_contains": "doing nothing, retreating, normal action, massive action",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "First Degree",
+      "Second Degree",
+      "Third Degree",
+      "Fourth Degree"
+    ],
+    "gold_answer": "The four degrees are doing nothing, retreating, normal or average action, and massive action.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 47,
+        "chunk_id": "591eed39dce448a4bdc89127ed0626632a32250c175234be9d02b01c0522bb0b",
+        "text_span": "The First Degree of Action “Doing nothing” is exactly what it sounds like",
+        "relevance": "primary",
+        "grade": 3
+      },
+      {
+        "page_number": 47,
+        "chunk_id": "c5ee746699ef341003c8af6a6e5a5467ae432ed6a196073843b65dffa2556735",
+        "text_span": "The Second Degree of Action“Retreaters” are those who take actions in reverse",
+        "relevance": "primary",
+        "grade": 3
+      },
+      {
+        "page_number": 49,
+        "chunk_id": "4528f6dbcf02f811ca57e8ac8c845173430300f4ff0cba3407d6c66cf83226e8",
+        "text_span": "The Third Degree of Action People who take normal levels of action",
+        "relevance": "primary",
+        "grade": 3
+      },
+      {
+        "page_number": 50,
+        "chunk_id": "d783d5b6517982bbeab95263c5d0e880acf22e97ae0a91a6c6ada7b7ca4e06ca",
+        "text_span": "The Fourth Degree: Massive ActionThough it might sound far-fetched, massive action is the most natural state of action",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": []
+  },
+  {
+    "id": "Q004",
+    "question": "What does the fourth degree of action mean?",
+    "expected_answer_contains": "massive action",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "Fourth Degree",
+      "Massive Action"
+    ],
+    "gold_answer": "The fourth degree is massive action: unusually high, persistent activity rather than ordinary levels of effort.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 50,
+        "chunk_id": "d783d5b6517982bbeab95263c5d0e880acf22e97ae0a91a6c6ada7b7ca4e06ca",
+        "text_span": "The Fourth Degree: Massive ActionThough it might sound far-fetched, massive action is the most natural state of action",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": []
+  },
+  {
+    "id": "Q005",
+    "question": "What are the four major mistakes people make when setting goals?",
+    "expected_answer_contains": "mistargeting, underestimating action, competing instead of dominating, underestimating adversity",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "Mistargeting",
+      "underestimating",
+      "dominating",
+      "adversity"
+    ],
+    "gold_answer": "The four mistakes are setting targets too low, underestimating required action/resources, competing instead of dominating, and underestimating adversity.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 16,
+        "chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+        "text_span": "The following is the basic series of mistakes people make when setting out to achieve goals:",
+        "relevance": "primary",
+        "grade": 3
+      },
+      {
+        "page_number": 16,
+        "chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+        "text_span": "1. Mistargeting by setting objectives that are too low and don't allow for enough correct motivation.",
+        "relevance": "primary",
+        "grade": 3
+      },
+      {
+        "page_number": 16,
+        "chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+        "text_span": "2. Severely underestimating what it will take in terms of actions, resources, money, and energy",
+        "relevance": "primary",
+        "grade": 3
+      },
+      {
+        "page_number": 16,
+        "chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+        "text_span": "3. Spending too much time competing and not enough time dominating their sector.",
+        "relevance": "primary",
+        "grade": 3
+      },
+      {
+        "page_number": 16,
+        "chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+        "text_span": "4. Underestimating the amount of adversity they will need to overcome",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": []
+  },
+  {
+    "id": "Q006",
+    "question": "Why does the author believe people commonly underestimate the amount of action required to achieve a goal?",
+    "expected_answer_contains": "unexpected events and miscalculate effort",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "underestimated",
+      "time",
+      "energy",
+      "money",
+      "effort"
+    ],
+    "gold_answer": "People underestimate because they fail to anticipate resistance, uncertainty, and other variables, so they miscalculate the time, energy, money, and effort required.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 21,
+        "chunk_id": "e26aa1531ab38b24b827c0ca621dc0ddf6272f1608b8aee4681d6ab24ab7573c",
+        "text_span": "Regardless of how superior your product, service, or proposition is, I assure you that there will be something you don't anticipate or correctly plan.",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": [
+      {
+        "page_number": 24,
+        "chunk_id": "d97bedbaf408dcbc1c0efe9a9d49b5839559b042861a463df23b778dcc8d2580",
+        "text_span": "you just haven't correctly assessed the amount of action necessary.",
+        "relevance": "acceptable",
+        "grade": 2
+      },
+      {
+        "page_number": 22,
+        "chunk_id": "7171f773a6236c1c9019f4c2fd19e6a0a3943f129be13c8dbf748066b28c6946",
+        "text_span": "I never considered that I had merely incorrectly estimated what it would take to move a new product into the marketplace.",
+        "relevance": "acceptable",
+        "grade": 2
+      }
+    ]
+  },
+  {
+    "id": "Q007",
+    "question": "Why does the author consider average or normal levels of action dangerous?",
+    "expected_answer_contains": "most susceptible to challenges",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "normal actions",
+      "dangerous",
+      "challenges"
+    ],
+    "gold_answer": "Normal action is dangerous because it is socially accepted yet leaves people vulnerable to ordinary events, financial conditions, and stress.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 50,
+        "chunk_id": "16f025ad714961af9741e978d982262a6af6a98083f856a2f14fb95cfdf2eba6",
+        "text_span": "Taking normal action is the most dangerous of the levels, because it is the most accepted by society.",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": [
+      {
+        "page_number": 49,
+        "chunk_id": "9eebea017b6b22d27e091df0fcfb9348aa713cd3851fde833815294bf619141e",
+        "text_span": "When you have been taking only normal actions, you are even more susceptible to challenges",
+        "relevance": "acceptable",
+        "grade": 2
+      }
+    ]
+  },
+  {
+    "id": "Q008",
+    "question": "Why does the author argue that massive action can create new problems?",
+    "expected_answer_contains": "massive action will always create new problems",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "massive action",
+      "new problems",
+      "criticized"
+    ],
+    "gold_answer": "Massive action creates new problems because operating beyond normal levels produces new situations to address and attracts criticism from others.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 54,
+        "chunk_id": "1fac7938bfb292551f02a5136c8b69a493ddff41f8a31ad3f22720dd221fe346",
+        "text_span": "If you don't create new problems, then you're not taking enough action.",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": [
+      {
+        "page_number": 54,
+        "chunk_id": "1fac7938bfb292551f02a5136c8b69a493ddff41f8a31ad3f22720dd221fe346",
+        "text_span": "You can also expect to be criticized and labeled by others when you start taking massive action.",
+        "relevance": "acceptable",
+        "grade": 2
+      }
+    ]
+  },
+  {
+    "id": "Q009",
+    "question": "Why does the author believe success must be maintained rather than achieved only once?",
+    "expected_answer_contains": "keep success and keep creating new levels",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "maintain",
+      "persist",
+      "new levels"
+    ],
+    "gold_answer": "Success must be maintained because one achievement can disappear; the author defines success as continuing to create and improve desired outcomes.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 19,
+        "chunk_id": "a41219c868ab37b20f3dfd4007bf514c1a21a830a66798075da2303c7ae159dc",
+        "text_span": "You will have to constantly maintain the yard in order for it to continue to be defined as a success.",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": [
+      {
+        "page_number": 19,
+        "chunk_id": "a41219c868ab37b20f3dfd4007bf514c1a21a830a66798075da2303c7ae159dc",
+        "text_span": "Your focus should be on the kind of success that builds upon itself",
+        "relevance": "acceptable",
+        "grade": 2
+      }
+    ]
+  },
+  {
+    "id": "Q010",
+    "question": "Why does the author argue that setting goals too low can limit the actions required to achieve them?",
+    "expected_answer_contains": "set the goals too small and you will not gear up for the massive action",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "goals too small",
+      "massive action"
+    ],
+    "gold_answer": "Small goals produce small thinking and insufficient action, so low targets fail to generate the effort needed for exceptional results.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 62,
+        "chunk_id": "c62619e5e0442529b2c2374d8caa513c1a2df73c5a23d1b8236b34411349dc59",
+        "text_span": "The reality is that if you start small, you are probably going to go small.",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": [
+      {
+        "page_number": 65,
+        "chunk_id": "ed2520a29f45ef331e6b74b52c77192cac2be24b4dd8676045e1938dfb3e7b65",
+        "text_span": "Set the goals too small, and you will not gear up for the",
+        "relevance": "acceptable",
+        "grade": 2
+      }
+    ]
+  },
+  {
+    "id": "Q011",
+    "question": "According to the author, what happens when someone dramatically underestimates the effort required for a goal?",
+    "expected_answer_contains": "become disappointed and discouraged",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "miscalculate",
+      "disappointed",
+      "discouraged"
+    ],
+    "gold_answer": "Underestimating effort leads to disappointment and discouragement, misidentifying the problem, lowering targets, or quitting instead of increasing activity.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 23,
+        "chunk_id": "07c58f10c6e1a77d7408c41a2d1eeca4fd4edfaf8d988103437e9808f2e85303",
+        "text_span": "When you miscalculate the efforts you need to make something happen, you become visibly disappointed and discouraged. This causes you to incorrectly identify the problem and sooner or later assume that the target is unattainable and ultimately throw in the towel.",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": [
+      {
+        "page_number": 23,
+        "chunk_id": "7ef215eedfb86b41a94ae7d490dbfe183436d936bfc5702c6cc39c6f3031f77d",
+        "text_span": "Instead, increase actions.",
+        "relevance": "acceptable",
+        "grade": 2
+      }
+    ]
+  },
+  {
+    "id": "Q012",
+    "question": "If someone keeps operating at ordinary levels of effort, why might they remain stuck at ordinary results?",
+    "expected_answer_contains": "Average never yields anything more than average",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "average",
+      "ordinary",
+      "results"
+    ],
+    "gold_answer": "Ordinary action produces ordinary outcomes because average thinking and action cannot generate extraordinary results and leave people exposed to problems.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 60,
+        "chunk_id": "a67b37baecbdb7b03f0776b3c4fec21b2e001c0774699c1bf24ba5db5b146dcf",
+        "text_span": "Average never yields anything more than average and usually much less. Average thinking and actions will only guarantee you misery, uncertainty, and failure.",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": [
+      {
+        "page_number": 58,
+        "chunk_id": "3546ee940c3c85f344bbf6c60003f63d8744c3ab68022e4fb726982ca757777e",
+        "text_span": "Average is a failing plan!",
+        "relevance": "acceptable",
+        "grade": 2
+      }
+    ]
+  },
+  {
+    "id": "Q013",
+    "question": "What does the book suggest about continuing to act after encountering resistance?",
+    "expected_answer_contains": "persist with 10X actions until resistance morphs into support",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "resistance",
+      "persist",
+      "10X actions"
+    ],
+    "gold_answer": "The author says to continue persistent, high-level action rather than backing off when resistance appears.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 134,
+        "chunk_id": "3f40577e93e82595f8335a3b17f23286b705251145e5ef9f40473be0e49fe856",
+        "text_span": "I know that anyendeavor I tackle will require me to persist with 10X actions",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": [
+      {
+        "page_number": 90,
+        "chunk_id": "217e86ab92bb6d3d4c902c14aa744de64d00c19e2c256085bb18707b77e8e089",
+        "text_span": "most people only attack to the point where they meet resistance—and then back off.",
+        "relevance": "acceptable",
+        "grade": 2
+      }
+    ]
+  },
+  {
+    "id": "Q014",
+    "question": "How does the author connect unusually ambitious thinking with unusually large amounts of action?",
+    "expected_answer_contains": "massive thoughts must be followed by massive actions",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "massive thoughts",
+      "massive actions"
+    ],
+    "gold_answer": "The author treats ambitious thinking and massive action as paired: larger targets require correspondingly larger levels of action.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 16,
+        "chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+        "text_span": "Massive thoughts must be followed by massive actions.",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": []
+  },
+  {
+    "id": "Q015",
+    "question": "Why does the author believe fear should lead to action rather than avoidance?",
+    "expected_answer_contains": "fear is a sign that you are doing what is needed",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "fear",
+      "action",
+      "indicator"
+    ],
+    "gold_answer": "Fear signals that you are moving beyond comfort and should therefore be used as an indicator to move forward and act.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 97,
+        "chunk_id": "b2a438cf47e578ce11794131ada1ce4cdbff9263893bbcc1cccf69412006a197",
+        "text_span": "Fear isn't bad or something to avoid; conversely, it's something you want to seek and embrace. Fear is actually a sign that you are doing what's needed to move in the right direction.",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": [
+      {
+        "page_number": 97,
+        "chunk_id": "41c041b75c0e10285c24c7176ce15d9bf99b43f7e82e44de29a786ed7e8e0716",
+        "text_span": "these boogeymen should be a sign to take action as well.",
+        "relevance": "acceptable",
+        "grade": 2
+      }
+    ]
+  },
+  {
+    "id": "Q016",
+    "question": "How does the author connect setting ambitious targets with estimating the effort required to achieve them?",
+    "expected_answer_contains": "set targets 10 times and do 10 times",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "targets",
+      "10 times",
+      "effort"
+    ],
+    "gold_answer": "Ambitious targets must be paired with a 10X estimate of the actions, resources, time, and effort required to reach them.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 16,
+        "chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+        "text_span": "You must set targets that are 10 times what you think you want and then do 10 times what you think it will take",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": [
+      {
+        "page_number": 24,
+        "chunk_id": "d97bedbaf408dcbc1c0efe9a9d49b5839559b042861a463df23b778dcc8d2580",
+        "text_span": "Multiply every expectation you have by 10, and you will probably be safe.",
+        "relevance": "acceptable",
+        "grade": 2
+      }
+    ]
+  },
+  {
+    "id": "Q017",
+    "question": "How does the author connect massive thinking with massive action?",
+    "expected_answer_contains": "Massive thoughts must be followed by massive actions",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "massive thinking",
+      "massive action"
+    ],
+    "gold_answer": "Massive thinking is ineffective without corresponding massive action; the two are presented as inseparable parts of the 10X Rule.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 16,
+        "chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+        "text_span": "Massive thoughts must be followed by massive actions.",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": []
+  },
+  {
+    "id": "Q018",
+    "question": "Why does the author connect normal levels of action with vulnerability to unexpected events?",
+    "expected_answer_contains": "normal actions are susceptible to challenges",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "normal actions",
+      "susceptible",
+      "unexpected"
+    ],
+    "gold_answer": "Normal action leaves too little capacity to absorb unexpected events, so ordinary disruptions can cause serious stress, uncertainty, and hurt.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 49,
+        "chunk_id": "9eebea017b6b22d27e091df0fcfb9348aa713cd3851fde833815294bf619141e",
+        "text_span": "When you have been taking only normal actions, you are even more susceptible to challenges that are certain to come your way.",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": [
+      {
+        "page_number": 58,
+        "chunk_id": "8a54e15b251164ad0f01b10520c8d4c14b0b1cd89244c5189b10e996f86c17fc",
+        "text_span": "Average levels of anything will fail you—or at the very least, put you at risk!",
+        "relevance": "acceptable",
+        "grade": 2
+      }
+    ]
+  },
+  {
+    "id": "Q019",
+    "question": "How does the author connect taking massive action with encountering new problems and criticism?",
+    "expected_answer_contains": "create new problems and receive criticism",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "new problems",
+      "criticized",
+      "massive action"
+    ],
+    "gold_answer": "Massive action creates new problems and draws criticism because it pushes beyond social norms and threatens people operating at lower action levels.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 54,
+        "chunk_id": "1fac7938bfb292551f02a5136c8b69a493ddff41f8a31ad3f22720dd221fe346",
+        "text_span": "You will know you are stepping into the realm of massive action when you (1) create new problems for yourself and (2) start to receive criticism and warning from others.",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": []
+  },
+  {
+    "id": "Q020",
+    "question": "How does the author connect achieving success with maintaining and creating additional success?",
+    "expected_answer_contains": "keep it and keep creating new levels",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "maintain",
+      "new levels",
+      "success"
+    ],
+    "gold_answer": "Success is not a one-time attainment; it must be maintained and continually expanded into new levels of achievement.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 19,
+        "chunk_id": "a41219c868ab37b20f3dfd4007bf514c1a21a830a66798075da2303c7ae159dc",
+        "text_span": "Your focus should be on the kind of success that builds upon itself—that which is perpetual and doesn't happen only one time. This book is about how to create extraordinary achievement, how to ensure you will attain it, how to keep it—and then how to keep creating new levels of it without it feeling like work.",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": [
+      {
+        "page_number": 14,
+        "chunk_id": "7286e2f5ea66cde5b6347e0e302a528ffbeeb1563d37e7a440aa8bf7b665156f",
+        "text_span": "Extremely successful people know that their efforts must continue in order for them to realize new achievements.",
+        "relevance": "acceptable",
+        "grade": 2
+      }
+    ]
+  },
+  {
+    "id": "Q021",
+    "question": "What are the four degrees of action, and which one does the author associate with exceptional success?",
+    "expected_answer_contains": "fourth degree, massive action",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "four degrees",
+      "fourth degree",
+      "massive action"
+    ],
+    "gold_answer": "The four degrees are doing nothing, retreating, normal action, and massive action; the fourth degree, massive action, is associated with exceptional success.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 47,
+        "chunk_id": "591eed39dce448a4bdc89127ed0626632a32250c175234be9d02b01c0522bb0b",
+        "text_span": "The First Degree of Action “Doing nothing” is exactly what it sounds like",
+        "relevance": "primary",
+        "grade": 3
+      },
+      {
+        "page_number": 47,
+        "chunk_id": "c5ee746699ef341003c8af6a6e5a5467ae432ed6a196073843b65dffa2556735",
+        "text_span": "The Second Degree of Action“Retreaters” are those who take actions in reverse",
+        "relevance": "primary",
+        "grade": 3
+      },
+      {
+        "page_number": 49,
+        "chunk_id": "4528f6dbcf02f811ca57e8ac8c845173430300f4ff0cba3407d6c66cf83226e8",
+        "text_span": "The Third Degree of Action People who take normal levels of action",
+        "relevance": "primary",
+        "grade": 3
+      },
+      {
+        "page_number": 50,
+        "chunk_id": "d783d5b6517982bbeab95263c5d0e880acf22e97ae0a91a6c6ada7b7ca4e06ca",
+        "text_span": "The Fourth Degree: Massive ActionThough it might sound far-fetched, massive action is the most natural state of action",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": []
+  },
+  {
+    "id": "Q022",
+    "question": "What is the relationship between 10X goals and 10X actions according to the author?",
+    "expected_answer_contains": "10X targets and 10X action",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "10X targets",
+      "10X actions"
+    ],
+    "gold_answer": "10X goals and 10X actions are paired: ambitious targets must be matched by ten times the expected effort and activity.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 16,
+        "chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+        "text_span": "You must set targets that are 10 times what you think you want and then do 10 times what you think it will take",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": []
+  },
+  {
+    "id": "Q023",
+    "question": "What does the author mean by \"average\" and why does he consider it a failing formula?",
+    "expected_answer_contains": "Average is a failing plan",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "average",
+      "failing",
+      "ordinary"
+    ],
+    "gold_answer": "Average means ordinary or less-than-extraordinary levels of thought and action; the author calls it failing because average inputs produce average or worse outcomes and leave people exposed.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 49,
+        "chunk_id": "9eebea017b6b22d27e091df0fcfb9348aa713cd3851fde833815294bf619141e",
+        "text_span": "Average, by definition, assumes “less than extraordinary.”",
+        "relevance": "primary",
+        "grade": 3
+      },
+      {
+        "page_number": 58,
+        "chunk_id": "3546ee940c3c85f344bbf6c60003f63d8744c3ab68022e4fb726982ca757777e",
+        "text_span": "Average is a failing plan! Average doesn't work in any area of life.",
+        "relevance": "primary",
+        "grade": 3
+      },
+      {
+        "page_number": 60,
+        "chunk_id": "a67b37baecbdb7b03f0776b3c4fec21b2e001c0774699c1bf24ba5db5b146dcf",
+        "text_span": "Average never yields anything more than average and usually much less.",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": []
+  },
+  {
+    "id": "Q024",
+    "question": "What does the author say about fear, and how should fear influence action?",
+    "expected_answer_contains": "fear should be an indicator to take action",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "fear",
+      "indicator",
+      "action"
+    ],
+    "gold_answer": "Fear is an indicator rather than an obstacle: it should signal that you are outside your comfort zone and should act now.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 97,
+        "chunk_id": "b2a438cf47e578ce11794131ada1ce4cdbff9263893bbcc1cccf69412006a197",
+        "text_span": "Fear is actually a sign that you are doing what's needed to move in the right direction.",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": [
+      {
+        "page_number": 98,
+        "chunk_id": "4ff15a2e49b96c988dde57d35b15b5a3665b4dee87a122b89531258a6a699f9b",
+        "text_span": "when you experience fear, it's a sign that the best time to take action is at that very moment.",
+        "relevance": "acceptable",
+        "grade": 2
+      }
+    ]
+  },
+  {
+    "id": "Q025",
+    "question": "What does the author identify as characteristics of successful people, and why does he believe these characteristics are attainable?",
+    "expected_answer_contains": "None of the things on this list is a superhuman quality",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "successful people",
+      "characteristics",
+      "attainable"
+    ],
+    "gold_answer": "He lists habits and traits such as a can-do attitude, problem solving, persistence, risk taking, action, commitment, courage, and goal focus, and says they are attainable because none is superhuman.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 131,
+        "chunk_id": "456c839fb943c50bbf173cc076ce339f6b4cfcd5491432d5adc77d10c74cb721",
+        "text_span": "Successful people talk, think, and approach situations, challenges, and problems differently than most people",
+        "relevance": "primary",
+        "grade": 3
+      },
+      {
+        "page_number": 134,
+        "chunk_id": "d3804689df0e087a48650e05b9c89222a273c9fec689616ff8920cb42a457c2a",
+        "text_span": "Successful individuals love to seek out problems",
+        "relevance": "primary",
+        "grade": 3
+      },
+      {
+        "page_number": 135,
+        "chunk_id": "33eee9517185def9198ca0ce9ea90b97ab8c936619123cc572363a389645e9c0",
+        "text_span": "Persistence is a great advantage to anyone who wants to multiply his or her success",
+        "relevance": "primary",
+        "grade": 3
+      },
+      {
+        "page_number": 135,
+        "chunk_id": "33eee9517185def9198ca0ce9ea90b97ab8c936619123cc572363a389645e9c0",
+        "text_span": "7. Take Risks",
+        "relevance": "primary",
+        "grade": 3
+      },
+      {
+        "page_number": 141,
+        "chunk_id": "17b44011ed4c0a8b07c57627026c101c4cab8b591dc7ae4738d36aebdeb6fd14",
+        "text_span": "Action is necessary—and there is no time more valuable than now.",
+        "relevance": "primary",
+        "grade": 3
+      },
+      {
+        "page_number": 141,
+        "chunk_id": "eacee1931c0908e72a916247e46b86eb7372866cadc78ca63276d543ff748ec0",
+        "text_span": "Courage comes to those who act, not to those who think, wait, and wonder.",
+        "relevance": "primary",
+        "grade": 3
+      },
+      {
+        "page_number": 144,
+        "chunk_id": "17ec89dcb76ea676501568e921ed2de87c7a5f956843d608d04bb30ae2759798",
+        "text_span": "20. Be Goal-Oriented",
+        "relevance": "primary",
+        "grade": 3
+      },
+      {
+        "page_number": 152,
+        "chunk_id": "080530c707d35b63cf619f0c82dd21c5cedd1ae5e180d265974b7ed344495c35",
+        "text_span": "None of the things on this list is a superhuman quality. Every single one is attainable.",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": []
+  },
+  {
+    "id": "Q026",
+    "question": "How does the author distinguish between taking normal action and taking massive action?",
+    "expected_answer_contains": "moving from the third to the fourth degree",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "normal action",
+      "massive action",
+      "fourth degree"
+    ],
+    "gold_answer": "Normal action is socially accepted and vulnerable to disruption, while massive action is the fourth degree and creates exceptional results through unusually high activity.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 50,
+        "chunk_id": "16f025ad714961af9741e978d982262a6af6a98083f856a2f14fb95cfdf2eba6",
+        "text_span": "Taking normal action is the most dangerous of the levels, because it is the most accepted by society.",
+        "relevance": "primary",
+        "grade": 3
+      },
+      {
+        "page_number": 50,
+        "chunk_id": "d783d5b6517982bbeab95263c5d0e880acf22e97ae0a91a6c6ada7b7ca4e06ca",
+        "text_span": "moving from the third to the fourth degree of action",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": []
+  },
+  {
+    "id": "Q027",
+    "question": "Why does the author believe people who retreat may actually be reacting to their interpretation of failure rather than failure itself?",
+    "expected_answer_contains": "it is their impression and evaluation of what failing and rejection mean",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "retreaters",
+      "impression",
+      "failure"
+    ],
+    "gold_answer": "Retreaters often respond to their interpretation and anticipated consequences of rejection or failure, then justify avoiding further action.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 48,
+        "chunk_id": "594e6fb79fe90d74ecaa0aa9839616c8433daca7b9c2dbe8d75854218e43c5bb",
+        "text_span": "More often than not, it's their impression and evaluation of what failing and rejection mean that is causing them to retreat.",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": [
+      {
+        "page_number": 49,
+        "chunk_id": "4528f6dbcf02f811ca57e8ac8c845173430300f4ff0cba3407d6c66cf83226e8",
+        "text_span": "They will then spend as much energy justifying their decision to retreat as the most successful person will in creating success.",
+        "relevance": "acceptable",
+        "grade": 2
+      }
+    ]
+  },
+  {
+    "id": "Q028",
+    "question": "How does the author's experience of building his first business illustrate his argument about estimating effort?",
+    "expected_answer_contains": "three months to almost three years",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "three months",
+      "three years",
+      "effort"
+    ],
+    "gold_answer": "He expected three months to reach his former income level, but it took almost three years, illustrating how severely effort and time can be underestimated.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 21,
+        "chunk_id": "a810a1939e2f2eda68b8b5c7c7e55108fdc8ab97e602d1c30a71c12673c15f89",
+        "text_span": "take me three months to get to the income level of the job I previously had. Well, it took me almost three years",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": [
+      {
+        "page_number": 21,
+        "chunk_id": "e26aa1531ab38b24b827c0ca621dc0ddf6272f1608b8aee4681d6ab24ab7573c",
+        "text_span": "I underestimated the time, energy, money, and effort necessary to bring my project to the point of success.",
+        "relevance": "acceptable",
+        "grade": 2
+      }
+    ]
+  },
+  {
+    "id": "Q029",
+    "question": "What does the author mean when he says that successful people continue creating new levels of success instead of relying on previous achievements?",
+    "expected_answer_contains": "keep creating new levels of success",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "new levels",
+      "success",
+      "maintain"
+    ],
+    "gold_answer": "Successful people treat success as something to maintain and build upon, continually pursuing the next level rather than stopping after an earlier achievement.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 19,
+        "chunk_id": "a41219c868ab37b20f3dfd4007bf514c1a21a830a66798075da2303c7ae159dc",
+        "text_span": "Your focus should be on the kind of success that builds upon itself—that which is perpetual and doesn't happen only one time.",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": [
+      {
+        "page_number": 14,
+        "chunk_id": "7286e2f5ea66cde5b6347e0e302a528ffbeeb1563d37e7a440aa8bf7b665156f",
+        "text_span": "Extremely successful people know that their efforts must continue in order for them to realize new achievements.",
+        "relevance": "acceptable",
+        "grade": 2
+      }
+    ]
+  },
+  {
+    "id": "Q030",
+    "question": "How does the book connect responsibility, action, and success?",
+    "expected_answer_contains": "success is something that happens because of you and because of the actions you take",
+    "expected_doc_id": "5b038ed7-a74c-4b00-9f61-059a11d55b23",
+    "expected_chunk_keywords": [
+      "responsibility",
+      "action",
+      "success"
+    ],
+    "gold_answer": "The book links responsibility to action by arguing that successful people accept accountability for creating success and take the necessary actions rather than making excuses.",
+    "answerable": true,
+    "gold_evidence": [
+      {
+        "page_number": 43,
+        "chunk_id": "8354394a00093e52a5803d84da662b56bf76a789f4037e06f913db88f2544a04",
+        "text_span": "Having (or failing to have) success, I believe, is a direct result of everything you are doing and thinking yourself.",
+        "relevance": "primary",
+        "grade": 3
+      },
+      {
+        "page_number": 44,
+        "chunk_id": "986c1aaf7995ae7cc60b38b9953e7b7a0611f4aacf7d9a88c2491b9c8d463ba9",
+        "text_span": "all because I was willing to take actions at massive levels, assume control, and take responsibility for every outcome.",
+        "relevance": "primary",
+        "grade": 3
+      }
+    ],
+    "acceptable_evidence": [
+      {
+        "page_number": 130,
+        "chunk_id": "432a38f7ec126acdc08417da8576c4e7ba76440200cee5475089a0eaf979c341",
+        "text_span": "If it is to be, it is up to me.",
+        "relevance": "acceptable",
+        "grade": 2
+      }
+    ]
+  },
+  {
+    "id": "Q031",
+    "question": "What does the author recommend as the best programming language for building AI systems?",
+    "expected_answer_contains": "",
+    "expected_doc_id": null,
+    "expected_chunk_keywords": [],
+    "gold_answer": null,
+    "answerable": false,
+    "gold_evidence": [],
+    "acceptable_evidence": []
+  },
+  {
+    "id": "Q032",
+    "question": "What embedding model does the author recommend for semantic search?",
+    "expected_answer_contains": "",
+    "expected_doc_id": null,
+    "expected_chunk_keywords": [],
+    "gold_answer": null,
+    "answerable": false,
+    "gold_evidence": [],
+    "acceptable_evidence": []
+  },
+  {
+    "id": "Q033",
+    "question": "What is the author's opinion on Qdrant?",
+    "expected_answer_contains": "",
+    "expected_doc_id": null,
+    "expected_chunk_keywords": [],
+    "gold_answer": null,
+    "answerable": false,
+    "gold_evidence": [],
+    "acceptable_evidence": []
+  },
+  {
+    "id": "Q034",
+    "question": "What does the author say about retrieval-augmented generation?",
+    "expected_answer_contains": "",
+    "expected_doc_id": null,
+    "expected_chunk_keywords": [],
+    "gold_answer": null,
+    "answerable": false,
+    "gold_evidence": [],
+    "acceptable_evidence": []
+  },
+  {
+    "id": "Q035",
+    "question": "What GPU does the author recommend for running Qwen3 8B?",
+    "expected_answer_contains": "",
+    "expected_doc_id": null,
+    "expected_chunk_keywords": [],
+    "gold_answer": null,
+    "answerable": false,
+    "gold_evidence": [],
+    "acceptable_evidence": []
+  }
+]

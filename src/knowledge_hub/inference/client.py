@@ -18,16 +18,3 @@ class InferenceClient:
         )
         response.raise_for_status()
         return response.json()
-
-    def embed(self, texts: list[str]) -> list[list[float]]:
-        response = httpx.post(
-            f"{self.base_url}/v1/embed",
-            json={"texts": texts},
-            timeout=self.timeout,
-        )
-        response.raise_for_status()
-        payload = response.json()
-        embeddings = payload.get("embeddings")
-        if not isinstance(embeddings, list):
-            raise TypeError("M0 /v1/embed response missing embeddings")
-        return embeddings
