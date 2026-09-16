@@ -1,0 +1,927 @@
+{
+  "dataset_version": "m2-gold-mapping-v1",
+  "source_dataset": "evaluation\\datasets\\questions-gold-evidence-v1.json",
+  "document": {
+    "name": "The 10X Rule.pdf",
+    "m2_chunk_count": 291
+  },
+  "records": [
+    {
+      "question_id": "Q001",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 12,
+      "m1_chunk_id": "dfeb79b5847e186cf39e808f1ac7110b64db26cc94559c5da9ca36e034151c7c",
+      "m1_text_span": "The 10X Rule is the one thing that will guarantee that you will get what you want in amounts greater than you ever thought imaginable.",
+      "m2_chunk_ids": [
+        "6d6507e0a4e41ac6b1cd895ae1a7dc7fe4620cff558e4cd68029144619a4dff0"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q001",
+      "evidence_type": "acceptable",
+      "grade": 2,
+      "relevance": "acceptable",
+      "m1_page": 16,
+      "m1_chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+      "m1_text_span": "You must set targets that are 10 times what you think you want and then do 10 times what you think it will take",
+      "m2_chunk_ids": [
+        "b9e4daec0cf3b26b214cf994276b7848cf39420947c3eb78b93437ad2ea20f7b"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q002",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 16,
+      "m1_chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+      "m1_text_span": "10 times the thoughts and 10 times the actions of other people.",
+      "m2_chunk_ids": [
+        "b9e4daec0cf3b26b214cf994276b7848cf39420947c3eb78b93437ad2ea20f7b"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q003",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 47,
+      "m1_chunk_id": "591eed39dce448a4bdc89127ed0626632a32250c175234be9d02b01c0522bb0b",
+      "m1_text_span": "The First Degree of Action “Doing nothing” is exactly what it sounds like",
+      "m2_chunk_ids": [
+        "45b726d888c4a93307ac1d66cb9d1e15c37c710701bba029898de709bd600aaa"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q003",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 47,
+      "m1_chunk_id": "c5ee746699ef341003c8af6a6e5a5467ae432ed6a196073843b65dffa2556735",
+      "m1_text_span": "The Second Degree of Action“Retreaters” are those who take actions in reverse",
+      "m2_chunk_ids": [
+        "785b31676f422035f504c4a649c3673e38e95375c258c84d0c80f34ba6196aa0"
+      ],
+      "status": "manual_resolution"
+    },
+    {
+      "question_id": "Q003",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 49,
+      "m1_chunk_id": "4528f6dbcf02f811ca57e8ac8c845173430300f4ff0cba3407d6c66cf83226e8",
+      "m1_text_span": "The Third Degree of Action People who take normal levels of action",
+      "m2_chunk_ids": [
+        "405f3d5a35c48f3e650172742c233dddd87251341fa4b0fd8a967fc06714c213"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q003",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 50,
+      "m1_chunk_id": "d783d5b6517982bbeab95263c5d0e880acf22e97ae0a91a6c6ada7b7ca4e06ca",
+      "m1_text_span": "The Fourth Degree: Massive ActionThough it might sound far-fetched, massive action is the most natural state of action",
+      "m2_chunk_ids": [
+        "25b74d8908aba01a564ec4a5350d1cfbedd444d432d8d1164d022220ed73dbf1"
+      ],
+      "status": "manual_resolution"
+    },
+    {
+      "question_id": "Q004",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 50,
+      "m1_chunk_id": "d783d5b6517982bbeab95263c5d0e880acf22e97ae0a91a6c6ada7b7ca4e06ca",
+      "m1_text_span": "The Fourth Degree: Massive ActionThough it might sound far-fetched, massive action is the most natural state of action",
+      "m2_chunk_ids": [
+        "25b74d8908aba01a564ec4a5350d1cfbedd444d432d8d1164d022220ed73dbf1"
+      ],
+      "status": "manual_resolution"
+    },
+    {
+      "question_id": "Q005",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 16,
+      "m1_chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+      "m1_text_span": "The following is the basic series of mistakes people make when setting out to achieve goals:",
+      "m2_chunk_ids": [
+        "b9e4daec0cf3b26b214cf994276b7848cf39420947c3eb78b93437ad2ea20f7b"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q005",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 16,
+      "m1_chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+      "m1_text_span": "1. Mistargeting by setting objectives that are too low and don't allow for enough correct motivation.",
+      "m2_chunk_ids": [
+        "b9e4daec0cf3b26b214cf994276b7848cf39420947c3eb78b93437ad2ea20f7b"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q005",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 16,
+      "m1_chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+      "m1_text_span": "2. Severely underestimating what it will take in terms of actions, resources, money, and energy",
+      "m2_chunk_ids": [
+        "b9e4daec0cf3b26b214cf994276b7848cf39420947c3eb78b93437ad2ea20f7b"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q005",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 16,
+      "m1_chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+      "m1_text_span": "3. Spending too much time competing and not enough time dominating their sector.",
+      "m2_chunk_ids": [
+        "b9e4daec0cf3b26b214cf994276b7848cf39420947c3eb78b93437ad2ea20f7b"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q005",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 16,
+      "m1_chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+      "m1_text_span": "4. Underestimating the amount of adversity they will need to overcome",
+      "m2_chunk_ids": [
+        "b9e4daec0cf3b26b214cf994276b7848cf39420947c3eb78b93437ad2ea20f7b"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q006",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 21,
+      "m1_chunk_id": "e26aa1531ab38b24b827c0ca621dc0ddf6272f1608b8aee4681d6ab24ab7573c",
+      "m1_text_span": "Regardless of how superior your product, service, or proposition is, I assure you that there will be something you don't anticipate or correctly plan.",
+      "m2_chunk_ids": [
+        "97d12ba803c8e94ce64645c48b81a1a8e728e5a1f38f20a5df5277f961690f8a"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q006",
+      "evidence_type": "acceptable",
+      "grade": 2,
+      "relevance": "acceptable",
+      "m1_page": 24,
+      "m1_chunk_id": "d97bedbaf408dcbc1c0efe9a9d49b5839559b042861a463df23b778dcc8d2580",
+      "m1_text_span": "you just haven't correctly assessed the amount of action necessary.",
+      "m2_chunk_ids": [
+        "c8052f3b1ebf4f347a38f65dccf63afb529626041e557830f6a4da8cf374a707"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q006",
+      "evidence_type": "acceptable",
+      "grade": 2,
+      "relevance": "acceptable",
+      "m1_page": 22,
+      "m1_chunk_id": "7171f773a6236c1c9019f4c2fd19e6a0a3943f129be13c8dbf748066b28c6946",
+      "m1_text_span": "I never considered that I had merely incorrectly estimated what it would take to move a new product into the marketplace.",
+      "m2_chunk_ids": [
+        "09d52075e9a4d85a43fce60b242895930a56d9f86b6bee41f1574d06113206d4"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q007",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 50,
+      "m1_chunk_id": "16f025ad714961af9741e978d982262a6af6a98083f856a2f14fb95cfdf2eba6",
+      "m1_text_span": "Taking normal action is the most dangerous of the levels, because it is the most accepted by society.",
+      "m2_chunk_ids": [
+        "8f1f8f4eb177a43ac3c546774066f3e8cfd931c1fe1a188bce1b8f07fc4fa572"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q007",
+      "evidence_type": "acceptable",
+      "grade": 2,
+      "relevance": "acceptable",
+      "m1_page": 49,
+      "m1_chunk_id": "9eebea017b6b22d27e091df0fcfb9348aa713cd3851fde833815294bf619141e",
+      "m1_text_span": "When you have been taking only normal actions, you are even more susceptible to challenges",
+      "m2_chunk_ids": [
+        "405f3d5a35c48f3e650172742c233dddd87251341fa4b0fd8a967fc06714c213"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q008",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 54,
+      "m1_chunk_id": "1fac7938bfb292551f02a5136c8b69a493ddff41f8a31ad3f22720dd221fe346",
+      "m1_text_span": "If you don't create new problems, then you're not taking enough action.",
+      "m2_chunk_ids": [
+        "69d46656839756687ebddd982ef16add0eff62c0d8673cfc557cae8c36e4c39e"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q008",
+      "evidence_type": "acceptable",
+      "grade": 2,
+      "relevance": "acceptable",
+      "m1_page": 54,
+      "m1_chunk_id": "1fac7938bfb292551f02a5136c8b69a493ddff41f8a31ad3f22720dd221fe346",
+      "m1_text_span": "You can also expect to be criticized and labeled by others when you start taking massive action.",
+      "m2_chunk_ids": [
+        "69d46656839756687ebddd982ef16add0eff62c0d8673cfc557cae8c36e4c39e"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q009",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 19,
+      "m1_chunk_id": "a41219c868ab37b20f3dfd4007bf514c1a21a830a66798075da2303c7ae159dc",
+      "m1_text_span": "You will have to constantly maintain the yard in order for it to continue to be defined as a success.",
+      "m2_chunk_ids": [
+        "374777e3295c887c9c681addbbcc5da0213b7adecff1d22b6b3840f451d8f87a"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q009",
+      "evidence_type": "acceptable",
+      "grade": 2,
+      "relevance": "acceptable",
+      "m1_page": 19,
+      "m1_chunk_id": "a41219c868ab37b20f3dfd4007bf514c1a21a830a66798075da2303c7ae159dc",
+      "m1_text_span": "Your focus should be on the kind of success that builds upon itself",
+      "m2_chunk_ids": [
+        "374777e3295c887c9c681addbbcc5da0213b7adecff1d22b6b3840f451d8f87a"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q010",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 62,
+      "m1_chunk_id": "c62619e5e0442529b2c2374d8caa513c1a2df73c5a23d1b8236b34411349dc59",
+      "m1_text_span": "The reality is that if you start small, you are probably going to go small.",
+      "m2_chunk_ids": [
+        "63430da68ae9b4eb3ba9fd186e0fd7a6f8d8878a13d4a511f893128d47519bd5"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q010",
+      "evidence_type": "acceptable",
+      "grade": 2,
+      "relevance": "acceptable",
+      "m1_page": 65,
+      "m1_chunk_id": "ed2520a29f45ef331e6b74b52c77192cac2be24b4dd8676045e1938dfb3e7b65",
+      "m1_text_span": "Set the goals too small, and you will not gear up for the",
+      "m2_chunk_ids": [
+        "d5038834ea61f21f06e450aaa25e316b172ee2494b6e70b8130e698490787786"
+      ],
+      "status": "manual_resolution"
+    },
+    {
+      "question_id": "Q011",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 23,
+      "m1_chunk_id": "07c58f10c6e1a77d7408c41a2d1eeca4fd4edfaf8d988103437e9808f2e85303",
+      "m1_text_span": "When you miscalculate the efforts you need to make something happen, you become visibly disappointed and discouraged. This causes you to incorrectly identify the problem and sooner or later assume that the target is unattainable and ultimately throw in the towel.",
+      "m2_chunk_ids": [
+        "8855919f879f876f154035458ffb24974e1a04a5dde810437ed0c5529e78c181"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q011",
+      "evidence_type": "acceptable",
+      "grade": 2,
+      "relevance": "acceptable",
+      "m1_page": 23,
+      "m1_chunk_id": "7ef215eedfb86b41a94ae7d490dbfe183436d936bfc5702c6cc39c6f3031f77d",
+      "m1_text_span": "Instead, increase actions.",
+      "m2_chunk_ids": [
+        "8855919f879f876f154035458ffb24974e1a04a5dde810437ed0c5529e78c181"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q012",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 60,
+      "m1_chunk_id": "a67b37baecbdb7b03f0776b3c4fec21b2e001c0774699c1bf24ba5db5b146dcf",
+      "m1_text_span": "Average never yields anything more than average and usually much less. Average thinking and actions will only guarantee you misery, uncertainty, and failure.",
+      "m2_chunk_ids": [
+        "cbe378bd68d385933d3138ad904766db535b93775e7008ab55bf79046419d343"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q012",
+      "evidence_type": "acceptable",
+      "grade": 2,
+      "relevance": "acceptable",
+      "m1_page": 58,
+      "m1_chunk_id": "3546ee940c3c85f344bbf6c60003f63d8744c3ab68022e4fb726982ca757777e",
+      "m1_text_span": "Average is a failing plan!",
+      "m2_chunk_ids": [
+        "f6eac46bfbecac0a28bdf7c31190f950bae077c5b762a3f791168205dc2bef84"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q013",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 134,
+      "m1_chunk_id": "3f40577e93e82595f8335a3b17f23286b705251145e5ef9f40473be0e49fe856",
+      "m1_text_span": "I know that anyendeavor I tackle will require me to persist with 10X actions",
+      "m2_chunk_ids": [
+        "acfd4200254e953f7a850d6a27ae0d9d2ff0d9b83e4d95f5ad8ffcc605ac266f"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q013",
+      "evidence_type": "acceptable",
+      "grade": 2,
+      "relevance": "acceptable",
+      "m1_page": 90,
+      "m1_chunk_id": "217e86ab92bb6d3d4c902c14aa744de64d00c19e2c256085bb18707b77e8e089",
+      "m1_text_span": "most people only attack to the point where they meet resistance—and then back off.",
+      "m2_chunk_ids": [
+        "ab68cd1a957bdc287cdc4ce2b9cc5656c8b5317428400d95e130c307637b0da8"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q014",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 16,
+      "m1_chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+      "m1_text_span": "Massive thoughts must be followed by massive actions.",
+      "m2_chunk_ids": [
+        "b9e4daec0cf3b26b214cf994276b7848cf39420947c3eb78b93437ad2ea20f7b"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q015",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 97,
+      "m1_chunk_id": "b2a438cf47e578ce11794131ada1ce4cdbff9263893bbcc1cccf69412006a197",
+      "m1_text_span": "Fear isn't bad or something to avoid; conversely, it's something you want to seek and embrace. Fear is actually a sign that you are doing what's needed to move in the right direction.",
+      "m2_chunk_ids": [
+        "756fcb9b3040715bbb1ec76e79f1436b53793ce13aef58610d908722f183c3e9"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q015",
+      "evidence_type": "acceptable",
+      "grade": 2,
+      "relevance": "acceptable",
+      "m1_page": 97,
+      "m1_chunk_id": "41c041b75c0e10285c24c7176ce15d9bf99b43f7e82e44de29a786ed7e8e0716",
+      "m1_text_span": "these boogeymen should be a sign to take action as well.",
+      "m2_chunk_ids": [
+        "756fcb9b3040715bbb1ec76e79f1436b53793ce13aef58610d908722f183c3e9"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q016",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 16,
+      "m1_chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+      "m1_text_span": "You must set targets that are 10 times what you think you want and then do 10 times what you think it will take",
+      "m2_chunk_ids": [
+        "b9e4daec0cf3b26b214cf994276b7848cf39420947c3eb78b93437ad2ea20f7b"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q016",
+      "evidence_type": "acceptable",
+      "grade": 2,
+      "relevance": "acceptable",
+      "m1_page": 24,
+      "m1_chunk_id": "d97bedbaf408dcbc1c0efe9a9d49b5839559b042861a463df23b778dcc8d2580",
+      "m1_text_span": "Multiply every expectation you have by 10, and you will probably be safe.",
+      "m2_chunk_ids": [
+        "c8052f3b1ebf4f347a38f65dccf63afb529626041e557830f6a4da8cf374a707"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q017",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 16,
+      "m1_chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+      "m1_text_span": "Massive thoughts must be followed by massive actions.",
+      "m2_chunk_ids": [
+        "b9e4daec0cf3b26b214cf994276b7848cf39420947c3eb78b93437ad2ea20f7b"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q018",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 49,
+      "m1_chunk_id": "9eebea017b6b22d27e091df0fcfb9348aa713cd3851fde833815294bf619141e",
+      "m1_text_span": "When you have been taking only normal actions, you are even more susceptible to challenges that are certain to come your way.",
+      "m2_chunk_ids": [
+        "405f3d5a35c48f3e650172742c233dddd87251341fa4b0fd8a967fc06714c213"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q018",
+      "evidence_type": "acceptable",
+      "grade": 2,
+      "relevance": "acceptable",
+      "m1_page": 58,
+      "m1_chunk_id": "8a54e15b251164ad0f01b10520c8d4c14b0b1cd89244c5189b10e996f86c17fc",
+      "m1_text_span": "Average levels of anything will fail you—or at the very least, put you at risk!",
+      "m2_chunk_ids": [
+        "f6eac46bfbecac0a28bdf7c31190f950bae077c5b762a3f791168205dc2bef84"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q019",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 54,
+      "m1_chunk_id": "1fac7938bfb292551f02a5136c8b69a493ddff41f8a31ad3f22720dd221fe346",
+      "m1_text_span": "You will know you are stepping into the realm of massive action when you (1) create new problems for yourself and (2) start to receive criticism and warning from others.",
+      "m2_chunk_ids": [
+        "69d46656839756687ebddd982ef16add0eff62c0d8673cfc557cae8c36e4c39e"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q020",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 19,
+      "m1_chunk_id": "a41219c868ab37b20f3dfd4007bf514c1a21a830a66798075da2303c7ae159dc",
+      "m1_text_span": "Your focus should be on the kind of success that builds upon itself—that which is perpetual and doesn't happen only one time. This book is about how to create extraordinary achievement, how to ensure you will attain it, how to keep it—and then how to keep creating new levels of it without it feeling like work.",
+      "m2_chunk_ids": [
+        "374777e3295c887c9c681addbbcc5da0213b7adecff1d22b6b3840f451d8f87a"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q020",
+      "evidence_type": "acceptable",
+      "grade": 2,
+      "relevance": "acceptable",
+      "m1_page": 14,
+      "m1_chunk_id": "7286e2f5ea66cde5b6347e0e302a528ffbeeb1563d37e7a440aa8bf7b665156f",
+      "m1_text_span": "Extremely successful people know that their efforts must continue in order for them to realize new achievements.",
+      "m2_chunk_ids": [
+        "eacb6c2d8137823ff4489d163ed0d185719863b6c9254d1646b5966a3d7c3397"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q021",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 47,
+      "m1_chunk_id": "591eed39dce448a4bdc89127ed0626632a32250c175234be9d02b01c0522bb0b",
+      "m1_text_span": "The First Degree of Action “Doing nothing” is exactly what it sounds like",
+      "m2_chunk_ids": [
+        "45b726d888c4a93307ac1d66cb9d1e15c37c710701bba029898de709bd600aaa"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q021",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 47,
+      "m1_chunk_id": "c5ee746699ef341003c8af6a6e5a5467ae432ed6a196073843b65dffa2556735",
+      "m1_text_span": "The Second Degree of Action“Retreaters” are those who take actions in reverse",
+      "m2_chunk_ids": [
+        "785b31676f422035f504c4a649c3673e38e95375c258c84d0c80f34ba6196aa0"
+      ],
+      "status": "manual_resolution"
+    },
+    {
+      "question_id": "Q021",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 49,
+      "m1_chunk_id": "4528f6dbcf02f811ca57e8ac8c845173430300f4ff0cba3407d6c66cf83226e8",
+      "m1_text_span": "The Third Degree of Action People who take normal levels of action",
+      "m2_chunk_ids": [
+        "405f3d5a35c48f3e650172742c233dddd87251341fa4b0fd8a967fc06714c213"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q021",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 50,
+      "m1_chunk_id": "d783d5b6517982bbeab95263c5d0e880acf22e97ae0a91a6c6ada7b7ca4e06ca",
+      "m1_text_span": "The Fourth Degree: Massive ActionThough it might sound far-fetched, massive action is the most natural state of action",
+      "m2_chunk_ids": [
+        "25b74d8908aba01a564ec4a5350d1cfbedd444d432d8d1164d022220ed73dbf1"
+      ],
+      "status": "manual_resolution"
+    },
+    {
+      "question_id": "Q022",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 16,
+      "m1_chunk_id": "70863271248ee1dfc643591267d859eda1ada46d35002f52d72f06befd244831",
+      "m1_text_span": "You must set targets that are 10 times what you think you want and then do 10 times what you think it will take",
+      "m2_chunk_ids": [
+        "b9e4daec0cf3b26b214cf994276b7848cf39420947c3eb78b93437ad2ea20f7b"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q023",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 49,
+      "m1_chunk_id": "9eebea017b6b22d27e091df0fcfb9348aa713cd3851fde833815294bf619141e",
+      "m1_text_span": "Average, by definition, assumes “less than extraordinary.”",
+      "m2_chunk_ids": [
+        "405f3d5a35c48f3e650172742c233dddd87251341fa4b0fd8a967fc06714c213"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q023",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 58,
+      "m1_chunk_id": "3546ee940c3c85f344bbf6c60003f63d8744c3ab68022e4fb726982ca757777e",
+      "m1_text_span": "Average is a failing plan! Average doesn't work in any area of life.",
+      "m2_chunk_ids": [
+        "f6eac46bfbecac0a28bdf7c31190f950bae077c5b762a3f791168205dc2bef84"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q023",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 60,
+      "m1_chunk_id": "a67b37baecbdb7b03f0776b3c4fec21b2e001c0774699c1bf24ba5db5b146dcf",
+      "m1_text_span": "Average never yields anything more than average and usually much less.",
+      "m2_chunk_ids": [
+        "cbe378bd68d385933d3138ad904766db535b93775e7008ab55bf79046419d343"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q024",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 97,
+      "m1_chunk_id": "b2a438cf47e578ce11794131ada1ce4cdbff9263893bbcc1cccf69412006a197",
+      "m1_text_span": "Fear is actually a sign that you are doing what's needed to move in the right direction.",
+      "m2_chunk_ids": [
+        "756fcb9b3040715bbb1ec76e79f1436b53793ce13aef58610d908722f183c3e9"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q024",
+      "evidence_type": "acceptable",
+      "grade": 2,
+      "relevance": "acceptable",
+      "m1_page": 98,
+      "m1_chunk_id": "4ff15a2e49b96c988dde57d35b15b5a3665b4dee87a122b89531258a6a699f9b",
+      "m1_text_span": "when you experience fear, it's a sign that the best time to take action is at that very moment.",
+      "m2_chunk_ids": [
+        "42bbfa02b373b135561a4132bbf586bb2a1fb8cfddddb79ae2beb9bdd616f20c"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q025",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 131,
+      "m1_chunk_id": "456c839fb943c50bbf173cc076ce339f6b4cfcd5491432d5adc77d10c74cb721",
+      "m1_text_span": "Successful people talk, think, and approach situations, challenges, and problems differently than most people",
+      "m2_chunk_ids": [
+        "16efc5cc44e038b0ebe4ea52e295f9ebf303ffcd305150d195a23a7448b9d085"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q025",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 134,
+      "m1_chunk_id": "d3804689df0e087a48650e05b9c89222a273c9fec689616ff8920cb42a457c2a",
+      "m1_text_span": "Successful individuals love to seek out problems",
+      "m2_chunk_ids": [
+        "acfd4200254e953f7a850d6a27ae0d9d2ff0d9b83e4d95f5ad8ffcc605ac266f"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q025",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 135,
+      "m1_chunk_id": "33eee9517185def9198ca0ce9ea90b97ab8c936619123cc572363a389645e9c0",
+      "m1_text_span": "Persistence is a great advantage to anyone who wants to multiply his or her success",
+      "m2_chunk_ids": [
+        "4aacd2797da8d5bfd1f816ac8253f52b0c899a58008b85a71f1af39a96dbc728"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q025",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 135,
+      "m1_chunk_id": "33eee9517185def9198ca0ce9ea90b97ab8c936619123cc572363a389645e9c0",
+      "m1_text_span": "7. Take Risks",
+      "m2_chunk_ids": [
+        "4aacd2797da8d5bfd1f816ac8253f52b0c899a58008b85a71f1af39a96dbc728"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q025",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 141,
+      "m1_chunk_id": "17b44011ed4c0a8b07c57627026c101c4cab8b591dc7ae4738d36aebdeb6fd14",
+      "m1_text_span": "Action is necessary—and there is no time more valuable than now.",
+      "m2_chunk_ids": [
+        "b4b14c451dfb2b4640e32167ebd1dfd16e1deb914e3e3b179ba944c512f0908a"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q025",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 141,
+      "m1_chunk_id": "eacee1931c0908e72a916247e46b86eb7372866cadc78ca63276d543ff748ec0",
+      "m1_text_span": "Courage comes to those who act, not to those who think, wait, and wonder.",
+      "m2_chunk_ids": [
+        "b4b14c451dfb2b4640e32167ebd1dfd16e1deb914e3e3b179ba944c512f0908a"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q025",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 144,
+      "m1_chunk_id": "17ec89dcb76ea676501568e921ed2de87c7a5f956843d608d04bb30ae2759798",
+      "m1_text_span": "20. Be Goal-Oriented",
+      "m2_chunk_ids": [
+        "ead53eb7432b514e03e0f118ed3b46161e2551dc872c4d21ef2859e28baf4cce"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q025",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 152,
+      "m1_chunk_id": "080530c707d35b63cf619f0c82dd21c5cedd1ae5e180d265974b7ed344495c35",
+      "m1_text_span": "None of the things on this list is a superhuman quality. Every single one is attainable.",
+      "m2_chunk_ids": [
+        "c0ca8080b3ba809849411bca08bcb3c4e3c0006bb98363ccbac7eb827127b2aa"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q026",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 50,
+      "m1_chunk_id": "16f025ad714961af9741e978d982262a6af6a98083f856a2f14fb95cfdf2eba6",
+      "m1_text_span": "Taking normal action is the most dangerous of the levels, because it is the most accepted by society.",
+      "m2_chunk_ids": [
+        "8f1f8f4eb177a43ac3c546774066f3e8cfd931c1fe1a188bce1b8f07fc4fa572"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q026",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 50,
+      "m1_chunk_id": "d783d5b6517982bbeab95263c5d0e880acf22e97ae0a91a6c6ada7b7ca4e06ca",
+      "m1_text_span": "moving from the third to the fourth degree of action",
+      "m2_chunk_ids": [
+        "25b74d8908aba01a564ec4a5350d1cfbedd444d432d8d1164d022220ed73dbf1"
+      ],
+      "status": "manual_resolution"
+    },
+    {
+      "question_id": "Q027",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 48,
+      "m1_chunk_id": "594e6fb79fe90d74ecaa0aa9839616c8433daca7b9c2dbe8d75854218e43c5bb",
+      "m1_text_span": "More often than not, it's their impression and evaluation of what failing and rejection mean that is causing them to retreat.",
+      "m2_chunk_ids": [
+        "08c1c7295510db17db8321364436bd304007a1682cb8fa3c68c072ff97bf10e3"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q027",
+      "evidence_type": "acceptable",
+      "grade": 2,
+      "relevance": "acceptable",
+      "m1_page": 49,
+      "m1_chunk_id": "4528f6dbcf02f811ca57e8ac8c845173430300f4ff0cba3407d6c66cf83226e8",
+      "m1_text_span": "They will then spend as much energy justifying their decision to retreat as the most successful person will in creating success.",
+      "m2_chunk_ids": [
+        "405f3d5a35c48f3e650172742c233dddd87251341fa4b0fd8a967fc06714c213"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q028",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 21,
+      "m1_chunk_id": "a810a1939e2f2eda68b8b5c7c7e55108fdc8ab97e602d1c30a71c12673c15f89",
+      "m1_text_span": "take me three months to get to the income level of the job I previously had. Well, it took me almost three years",
+      "m2_chunk_ids": [
+        "97d12ba803c8e94ce64645c48b81a1a8e728e5a1f38f20a5df5277f961690f8a"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q028",
+      "evidence_type": "acceptable",
+      "grade": 2,
+      "relevance": "acceptable",
+      "m1_page": 21,
+      "m1_chunk_id": "e26aa1531ab38b24b827c0ca621dc0ddf6272f1608b8aee4681d6ab24ab7573c",
+      "m1_text_span": "I underestimated the time, energy, money, and effort necessary to bring my project to the point of success.",
+      "m2_chunk_ids": [
+        "97d12ba803c8e94ce64645c48b81a1a8e728e5a1f38f20a5df5277f961690f8a"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q029",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 19,
+      "m1_chunk_id": "a41219c868ab37b20f3dfd4007bf514c1a21a830a66798075da2303c7ae159dc",
+      "m1_text_span": "Your focus should be on the kind of success that builds upon itself—that which is perpetual and doesn't happen only one time.",
+      "m2_chunk_ids": [
+        "374777e3295c887c9c681addbbcc5da0213b7adecff1d22b6b3840f451d8f87a"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q029",
+      "evidence_type": "acceptable",
+      "grade": 2,
+      "relevance": "acceptable",
+      "m1_page": 14,
+      "m1_chunk_id": "7286e2f5ea66cde5b6347e0e302a528ffbeeb1563d37e7a440aa8bf7b665156f",
+      "m1_text_span": "Extremely successful people know that their efforts must continue in order for them to realize new achievements.",
+      "m2_chunk_ids": [
+        "eacb6c2d8137823ff4489d163ed0d185719863b6c9254d1646b5966a3d7c3397"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q030",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 43,
+      "m1_chunk_id": "8354394a00093e52a5803d84da662b56bf76a789f4037e06f913db88f2544a04",
+      "m1_text_span": "Having (or failing to have) success, I believe, is a direct result of everything you are doing and thinking yourself.",
+      "m2_chunk_ids": [
+        "659ba5ebd225dfed736d97cc7a439f2fe0e2b6dca694a9af6763e716cfc26436"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q030",
+      "evidence_type": "primary",
+      "grade": 3,
+      "relevance": "primary",
+      "m1_page": 44,
+      "m1_chunk_id": "986c1aaf7995ae7cc60b38b9953e7b7a0611f4aacf7d9a88c2491b9c8d463ba9",
+      "m1_text_span": "all because I was willing to take actions at massive levels, assume control, and take responsibility for every outcome.",
+      "m2_chunk_ids": [
+        "358092fe63ca229a424041a84d33695d7befc07b1be430751cac693067fe9f96"
+      ],
+      "status": "exact"
+    },
+    {
+      "question_id": "Q030",
+      "evidence_type": "acceptable",
+      "grade": 2,
+      "relevance": "acceptable",
+      "m1_page": 130,
+      "m1_chunk_id": "432a38f7ec126acdc08417da8576c4e7ba76440200cee5475089a0eaf979c341",
+      "m1_text_span": "If it is to be, it is up to me.",
+      "m2_chunk_ids": [
+        "cfcf7719bc3cc736aa38ed7ab89959a1e7203fc9174df23a9593f188572b8ce1"
+      ],
+      "status": "exact"
+    }
+  ],
+  "summary": {
+    "exact": 63,
+    "manual_resolution": 7,
+    "candidate": 0,
+    "ambiguous": 0,
+    "unresolved": 0
+  }
+}
