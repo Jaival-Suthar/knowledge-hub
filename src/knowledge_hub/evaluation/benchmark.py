@@ -7,11 +7,10 @@ import json
 from pathlib import Path
 from typing import Any
 
-from qdrant_client import QdrantClient
-
 from knowledge_hub.chunking.pdf import PdfChunker
-from knowledge_hub.inference.client import InferenceClient
-from knowledge_hub.inference.embedder import M0Embedder
+from knowledge_hub.config.settings import settings
+from knowledge_hub.indexing import QdrantIndex, embed_and_upsert
+from knowledge_hub.inference.embedder import SentenceTransformerEmbedder
 from knowledge_hub.ingestion.adapters.pdf import PdfAdapter
 from knowledge_hub.retrieval.bm25 import BM25Retriever
 from knowledge_hub.retrieval.dense import QdrantDenseRetriever
@@ -88,12 +87,24 @@ def run_dense_experiment(
     *,
     qdrant_url: str,
     collection: str,
-    m0_url: str,
 ):
-    retriever = QdrantDenseRetriever(
-        client=QdrantClient(url=qdrant_url),
+    embedder = SentenceTransformerEmbedder(
+        model_name=settings.embedding_model_name,
+        dimension=settings.embedding_dimension,
+        device=settings.embedding_device,
+        normalize_embeddings=settings.embedding_normalize,
+    )
+    index = QdrantIndex(
+        url=qdrant_url,
         collection=collection,
-        embedder=M0Embedder(InferenceClient(m0_url)),
+        vector_size=settings.embedding_dimension,
+    )
+    embed_and_upsert(index, chunks, embedder)
+
+    retriever = QdrantDenseRetriever(
+        client=index.client,
+        collection=collection,
+        embedder=embedder,
     )
 
     return evaluate_retriever(
@@ -159,11 +170,6 @@ def main() -> int:
         default="knowledge_hub",
     )
 
-    parser.add_argument(
-        "--m0-url",
-        default="http://localhost:8000",
-    )
-
     args = parser.parse_args()
 
     chunks = load_pdf_chunks(args.pdf)
@@ -180,7 +186,6 @@ def main() -> int:
             questions,
             qdrant_url=args.qdrant_url,
             collection=args.collection,
-            m0_url=args.m0_url,
         )
 
     output = args.output or DEFAULT_REPORT_DIR / f"{args.mode}.json"

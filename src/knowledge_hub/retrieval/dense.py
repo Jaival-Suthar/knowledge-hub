@@ -18,12 +18,13 @@ class QdrantDenseRetriever:
         if top_k <= 0:
             return []
         vector = self.embedder.embed([query])[0]
-        points = self.client.search(
+        response = self.client.query_points(
             collection_name=self.collection,
-            query_vector=vector,
+            query=vector,
             limit=top_k,
             with_payload=True,
         )
+        points = response.points
         results: list[RankedChunk] = []
         for rank, point in enumerate(points, start=1):
             payload = dict(point.payload or {})

@@ -63,7 +63,7 @@ This work selectively absorbs proven M1 architecture into M2-owned abstractions:
 - structural eligibility filtering
 - lazy cross-encoder reranking
 - inspectable `RetrievalTrace`
-- M0 `/v1/generate` and `/v1/embed` client boundary
+- M0 `/v1/generate` client boundary; local M1-compatible embeddings
 - preserved 35-question M1 regression dataset
 
 M1 remains a separate repository and is not imported at runtime. No M1 source package,

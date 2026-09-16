@@ -17,13 +17,23 @@ class QdrantIndex:
         self.vector_size = vector_size
 
     def ensure_collection(self) -> None:
-        if not self.client.collection_exists(self.collection):
-            self.client.create_collection(
-                collection_name=self.collection,
-                vectors_config=VectorParams(
-                    size=self.vector_size, distance=Distance.COSINE
-                ),
-            )
+        if self.client.collection_exists(self.collection):
+            collection_info = self.client.get_collection(self.collection)
+            configured_vectors = collection_info.config.params.vectors
+            configured_size = getattr(configured_vectors, "size", None)
+            if configured_size is not None and configured_size != self.vector_size:
+                raise ValueError(
+                    f"Qdrant collection {self.collection!r} has vector dimension "
+                    f"{configured_size}, expected {self.vector_size}"
+                )
+            return
+
+        self.client.create_collection(
+            collection_name=self.collection,
+            vectors_config=VectorParams(
+                size=self.vector_size, distance=Distance.COSINE
+            ),
+        )
 
     def upsert(self, chunks: list[Chunk], embeddings: list[list[float]]) -> None:
         if len(chunks) != len(embeddings):
