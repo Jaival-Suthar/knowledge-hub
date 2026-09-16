@@ -52,9 +52,13 @@ class QueryEvaluation:
     result_chunk_ids: tuple[str, ...]
     result_scores: tuple[float, ...]
     latency_ms: float
+    timing: dict[str, float] | None = None
 
     def as_dict(self) -> dict[str, object]:
-        return asdict(self)
+        payload = asdict(self)
+        if self.timing is None:
+            payload.pop("timing")
+        return payload
 
 
 @dataclass(frozen=True)
@@ -63,9 +67,10 @@ class EvaluationReport:
     metrics: RetrievalMetrics
     by_category: dict[str, RetrievalMetrics]
     queries: tuple[QueryEvaluation, ...]
+    rrf_k: int | None = None
 
     def as_dict(self) -> dict[str, object]:
-        return {
+        report = {
             "retriever": self.retriever,
             "metrics": self.metrics.as_dict(),
             "by_category": {
@@ -74,6 +79,9 @@ class EvaluationReport:
             },
             "queries": [query.as_dict() for query in self.queries],
         }
+        if self.rrf_k is not None:
+            report["rrf_k"] = self.rrf_k
+        return report
 
 
 class Searcher:
@@ -168,6 +176,11 @@ def _evaluate_question(
         result_chunk_ids=tuple(result.chunk.chunk_id for result in results),
         result_scores=tuple(float(result.score) for result in results),
         latency_ms=elapsed_ms,
+        timing=(
+            timing.as_dict()
+            if (timing := getattr(retriever, "last_timing", None)) is not None
+            else None
+        ),
     )
 
 

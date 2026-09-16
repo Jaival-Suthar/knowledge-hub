@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from dataclasses import replace
 from pathlib import Path
 from typing import Any
 
@@ -14,12 +15,17 @@ from knowledge_hub.inference.embedder import SentenceTransformerEmbedder
 from knowledge_hub.ingestion.adapters.pdf import PdfAdapter
 from knowledge_hub.retrieval.bm25 import BM25Retriever
 from knowledge_hub.retrieval.dense import QdrantDenseRetriever
+from knowledge_hub.retrieval.hybrid import HybridRetriever
+from knowledge_hub.retrieval.types import RankedChunk
 
 from .retrieval import EvaluationQuestion, evaluate_retriever
 
 DEFAULT_DATASET = Path("evaluation/datasets/m2_gold-evidence-v1.json")
 DEFAULT_PDF = Path("data/raw/The 10X Rule.pdf")
 DEFAULT_REPORT_DIR = Path("evaluation/reports")
+DEFAULT_TOP_K = 20
+DEFAULT_HYBRID_CANDIDATE_K = 20
+DEFAULT_RRF_K = 60
 
 
 def load_questions(
@@ -88,6 +94,21 @@ def run_dense_experiment(
     qdrant_url: str,
     collection: str,
 ):
+    retriever = _build_dense_retriever(
+        qdrant_url=qdrant_url,
+        collection=collection,
+        chunks=chunks,
+    )
+
+    return evaluate_retriever(
+        retriever,
+        chunks,
+        questions,
+        name="dense",
+    )
+
+
+def _build_dense_retriever(*, qdrant_url: str, collection: str, chunks):
     embedder = SentenceTransformerEmbedder(
         model_name=settings.embedding_model_name,
         dimension=settings.embedding_dimension,
@@ -100,19 +121,59 @@ def run_dense_experiment(
         vector_size=settings.embedding_dimension,
     )
     embed_and_upsert(index, chunks, embedder)
-
-    retriever = QdrantDenseRetriever(
+    return QdrantDenseRetriever(
         client=index.client,
         collection=collection,
         embedder=embedder,
     )
 
-    return evaluate_retriever(
-        retriever,
+
+class _HybridEvaluationAdapter:
+    """Adapt HybridRetriever to the evaluation Searcher call shape."""
+
+    def __init__(self, retriever: HybridRetriever, candidate_k: int) -> None:
+        self.retriever = retriever
+        self.candidate_k = candidate_k
+
+    @property
+    def last_timing(self):
+        return self.retriever.last_timing
+
+    def search(self, query: str, top_k: int) -> list[RankedChunk]:
+        return self.retriever.search(
+            query,
+            top_k=top_k,
+            candidate_k=self.candidate_k,
+        )
+
+
+def run_hybrid_experiment(
+    chunks,
+    questions: tuple[EvaluationQuestion, ...],
+    *,
+    qdrant_url: str,
+    collection: str,
+    candidate_k: int = DEFAULT_HYBRID_CANDIDATE_K,
+    rrf_k: int = DEFAULT_RRF_K,
+):
+    dense_retriever = _build_dense_retriever(
+        qdrant_url=qdrant_url,
+        collection=collection,
+        chunks=chunks,
+    )
+    hybrid_retriever = HybridRetriever(
+        dense_retriever,
+        BM25Retriever(chunks),
+        rrf_k=rrf_k,
+    )
+
+    report = evaluate_retriever(
+        _HybridEvaluationAdapter(hybrid_retriever, candidate_k),
         chunks,
         questions,
-        name="dense",
+        name="hybrid",
     )
+    return replace(report, rrf_k=rrf_k)
 
 
 def write_report(
@@ -134,12 +195,19 @@ def write_report(
     )
 
 
+def _positive_int(value: str) -> int:
+    parsed = int(value)
+    if parsed <= 0:
+        raise argparse.ArgumentTypeError("rrf-k must be a positive integer")
+    return parsed
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
 
     parser.add_argument(
         "--mode",
-        choices=("bm25", "dense"),
+        choices=("bm25", "dense", "hybrid"),
         required=True,
     )
 
@@ -170,6 +238,12 @@ def main() -> int:
         default="knowledge_hub",
     )
 
+    parser.add_argument(
+        "--rrf-k",
+        type=_positive_int,
+        default=DEFAULT_RRF_K,
+    )
+
     args = parser.parse_args()
 
     chunks = load_pdf_chunks(args.pdf)
@@ -180,12 +254,21 @@ def main() -> int:
             chunks,
             questions,
         )
-    else:
+    elif args.mode == "dense":
         report = run_dense_experiment(
             chunks,
             questions,
             qdrant_url=args.qdrant_url,
             collection=args.collection,
+        )
+    else:
+        report = run_hybrid_experiment(
+            chunks,
+            questions,
+            qdrant_url=args.qdrant_url,
+            collection=args.collection,
+            candidate_k=DEFAULT_HYBRID_CANDIDATE_K,
+            rrf_k=args.rrf_k,
         )
 
     output = args.output or DEFAULT_REPORT_DIR / f"{args.mode}.json"
