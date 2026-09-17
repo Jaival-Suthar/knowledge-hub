@@ -3,6 +3,7 @@ from .fusion import ReciprocalRankFusion
 from .hybrid import HybridRetriever
 from .metadata import MetadataFilter, MetadataFilters
 from .pipeline import RetrievalPipeline
+from .reranking import CrossEncoderReranker
 from .rrf import reciprocal_rank_fusion
 from .structural import EligibilityStatus, StructuralEligibility
 from .timing import RetrievalTiming
@@ -11,6 +12,7 @@ from .types import RankedChunk, RetrievalTrace
 __all__ = [
     "BM25Index",
     "BM25Retriever",
+    "CrossEncoderReranker",
     "EligibilityStatus",
     "HybridRetriever",
     "MetadataFilter",

@@ -1,12 +1,16 @@
 from __future__ import annotations
 
+from collections.abc import Sequence
+
 from knowledge_hub.retrieval.types import RankedChunk
+
+DEFAULT_RERANKER_MODEL_NAME = "BAAI/bge-reranker-base"
 
 
 class CrossEncoderReranker:
-    """M1-derived BGE-style cross-encoder boundary, lazy-loading the model."""
+    """Lazy local BGE cross-encoder reranker for canonical ranked chunks."""
 
-    def __init__(self, model_name: str) -> None:
+    def __init__(self, model_name: str = DEFAULT_RERANKER_MODEL_NAME) -> None:
         self.model_name = model_name
         self._model = None
 
@@ -19,7 +23,7 @@ class CrossEncoderReranker:
         return self._model
 
     def rerank(
-        self, query: str, candidates: list[RankedChunk], top_k: int
+        self, query: str, candidates: Sequence[RankedChunk], top_k: int
     ) -> list[RankedChunk]:
         if not candidates or top_k <= 0:
             return []
@@ -28,8 +32,7 @@ class CrossEncoderReranker:
         )
         ordered = sorted(
             zip(candidates, scores, strict=True),
-            key=lambda pair: float(pair[1]),
-            reverse=True,
+            key=lambda pair: (-float(pair[1]), pair[0].rank),
         )[:top_k]
         return [
             RankedChunk(
