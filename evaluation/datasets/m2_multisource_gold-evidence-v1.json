@@ -1,0 +1,377 @@
+{
+  "dataset": "m2_multisource_gold-evidence-v1",
+  "version": "1.0",
+  "description": "Multi-source gold-evidence dataset for Knowledge Hub M2 retrieval evaluation.",
+  "questions": [
+    {
+      "id": "agentguard-01",
+      "source_type": "article",
+      "source": "https://jaivalsuthar.hashnode.dev/agentguard-the-trust-boundary-for-agentic-execution",
+      "question": "What problem does AgentGuard address that is different from traditional software verification?",
+      "answerable": true,
+      "category": "semantic",
+      "m2_gold_evidence": [
+        {
+          "m2_chunk_id": "9b94badcc9661e06f5dd3ef8467c86c3ca2a72a01b9e4ccf3ead22d801831e5a",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "agentguard-02",
+      "source_type": "article",
+      "source": "https://jaivalsuthar.hashnode.dev/agentguard-the-trust-boundary-for-agentic-execution",
+      "question": "What questions does AgentGuard separate when turning an agent execution into an execution proof?",
+      "answerable": true,
+      "category": "semantic",
+      "m2_gold_evidence": [
+        {
+          "m2_chunk_id": "288947c4e4c8acb0675379d2d726b233b3219dc415968125c7561095e5de821e",
+          "grade": 3
+        },
+        {
+          "m2_chunk_id": "d8cf41e3a70644201e8b1ff034a7475fd5f1e637dd2c2966ad5b656271846a0a",
+          "grade": 3
+        },
+        {
+          "m2_chunk_id": "bc0ac1e4e50958c1714d0393c25a325bf063aaeffc134eb108626143334d54a1",
+          "grade": 3
+        },
+        {
+          "m2_chunk_id": "8343d79f9f7ea794cbfe746c0a4b358c4c26556d3800bd3ee76288be9c5fd13e",
+          "grade": 3
+        },
+        {
+          "m2_chunk_id": "f6c7d53dcba72a85585a71c5b91308ed1651e00b87dee1d9de9b5ce7fa16dede",
+          "grade": 3
+        },
+        {
+          "m2_chunk_id": "d0d6ffd758d31d69e2e24b421b5df088d27c057c8fac88280e0518ada24627a4",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "agentguard-03",
+      "source_type": "article",
+      "source": "https://jaivalsuthar.hashnode.dev/agentguard-the-trust-boundary-for-agentic-execution",
+      "question": "Why does AgentGuard treat retries as part of the truth instead of only considering the final successful attempt?",
+      "answerable": true,
+      "category": "semantic",
+      "m2_gold_evidence": [
+        {
+          "m2_chunk_id": "eae8793c1d6d47bb85bef26991066ba50fd9974c2b9c28550450a8883fcbc2fe",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "agentguard-04",
+      "source_type": "article",
+      "source": "https://jaivalsuthar.hashnode.dev/agentguard-the-trust-boundary-for-agentic-execution",
+      "question": "What is the role of the Assurance Artifact in AgentGuard?",
+      "answerable": true,
+      "category": "semantic",
+      "m2_gold_evidence": [
+        {
+          "m2_chunk_id": "028d0a92b18e2b2cf5391273c71d491816feeaf12e41a443d7833cf49d9dbf17",
+          "grade": 3
+        }
+      ]
+    },
+    {
+    "id": "prefetch-01",
+    "source_type": "article",
+    "source": "https://jaivalsuthar.hashnode.dev/prefetching-at-scale-why-instagram-works-without-internet-through-predictive-caching",
+    "question": "Why does Instagram use multiple cache layers instead of relying on a single cache?",
+    "answerable": true,
+    "category": "semantic",
+    "m2_gold_evidence": [
+        {
+        "m2_chunk_id": "ae5ed53e87d77ebbd4faba6b0b90cb728a52f83af3fb8886052c1818603cb533",
+        "grade": 3
+        },
+        {
+        "m2_chunk_id": "5015bfa0c57eb475d005a254355e7aa5d230633db6d9b748b501415a9530cbc9",
+        "grade": 3
+        },
+        {
+        "m2_chunk_id": "1d661246df8dfa0ab5f9c6b3333ba47064c3b0970be1a1cbe019eba3195b203d",
+        "grade": 3
+        },
+        {
+        "m2_chunk_id": "b8e854d973d22212c381261feb99a803b5358d562f633f1a67aa3735bd0f906b",
+        "grade": 3
+        }
+    ]
+    },
+    {
+    "id": "prefetch-02",
+    "source_type": "article",
+    "source": "https://jaivalsuthar.hashnode.dev/prefetching-at-scale-why-instagram-works-without-internet-through-predictive-caching",
+    "question": "How does the L3 network prefetch pipeline work while a user is viewing the current post?",
+    "answerable": true,
+    "category": "semantic",
+    "m2_gold_evidence": [
+        {
+        "m2_chunk_id": "b8e854d973d22212c381261feb99a803b5358d562f633f1a67aa3735bd0f906b",
+        "grade": 3
+        }
+    ]
+    },
+    {
+    "id": "prefetch-03",
+    "source_type": "article",
+    "source": "https://jaivalsuthar.hashnode.dev/prefetching-at-scale-why-instagram-works-without-internet-through-predictive-caching",
+    "question": "Why is feed ranking not identical to prefetch scheduling?",
+    "answerable": true,
+    "category": "semantic",
+    "m2_gold_evidence": [
+        {
+        "m2_chunk_id": "a5f2dd3818250858468bc045c15b242e0779b5a84d840fce0b45ee646601f178",
+        "grade": 3
+        }
+    ]
+    },
+    {
+        "id": "googledocs-01",
+        "source_type": "article",
+        "source": "https://jaivalsuthar.hashnode.dev/what-google-docs-taught-us-about-building-the-impossible",
+        "question": "Why does traditional master-slave replication break down for real-time collaborative editing?",
+        "answerable": true,
+        "category": "semantic",
+        "m2_gold_evidence": [
+            {
+            "m2_chunk_id": "abad9cc122e00a9c1836686dc7911833303e60f046cd30595467a5384c50eaec",
+            "grade": 3
+            }
+        ]
+        },
+        {
+        "id": "googledocs-02",
+        "source_type": "article",
+        "source": "https://jaivalsuthar.hashnode.dev/what-google-docs-taught-us-about-building-the-impossible",
+        "question": "How does Operational Transformation help Google Docs handle concurrent edits?",
+        "answerable": true,
+        "category": "semantic",
+        "m2_gold_evidence": [
+            {
+            "m2_chunk_id": "d63db7ae271636a9ff69276dbb217d051a95104778a7e0c4ce1c884158c33a3a",
+            "grade": 3
+            }
+        ]
+        },
+        {
+        "id": "googledocs-03",
+        "source_type": "article",
+        "source": "https://jaivalsuthar.hashnode.dev/what-google-docs-taught-us-about-building-the-impossible",
+        "question": "What does Google Docs demonstrate about eventual consistency in user-facing distributed systems?",
+        "answerable": true,
+        "category": "semantic",
+        "m2_gold_evidence": [
+            {
+            "m2_chunk_id": "59a2848c3ee83e0de41cec4ba094ded9a55c4ef6759d31bfc1e80119ca8c4d8b",
+            "grade": 3
+            }
+        ]
+        },
+        {
+        "id": "googledocs-04",
+        "source_type": "article",
+        "source": "https://jaivalsuthar.hashnode.dev/what-google-docs-taught-us-about-building-the-impossible",
+        "question": "What guarantees that different Google Docs clients eventually reach the same document state despite receiving operations in different orders?",
+        "answerable": true,
+        "category": "semantic",
+        "m2_gold_evidence": [
+            {
+            "m2_chunk_id": "8facf6adf25582201851f51146fec0b1a795c8407581d48708ab4fee886af7eb",
+            "grade": 3
+            }
+        ]
+    },
+    {
+        "id": "rippletalk-01",
+        "source_type": "github",
+        "source": "https://github.com/Jaival-Suthar/RippleTalk",
+        "question": "How is authentication and points state made available to the RippleTalk application?",
+        "answerable": true,
+        "category": "code",
+        "m2_gold_evidence": [
+            {
+            "m2_chunk_id": "1b27edf4602b1be5f9099792278201b1e3092dec7846774e1932546002e54543",
+            "grade": 3
+            }
+        ]
+        },
+        {
+        "id": "rippletalk-02",
+        "source_type": "github",
+        "source": "https://github.com/Jaival-Suthar/RippleTalk",
+        "question": "What state and operations does RippleTalk expose through its authentication context?",
+        "answerable": true,
+        "category": "exact_identifier",
+        "m2_gold_evidence": [
+            {
+            "m2_chunk_id": "5ce6aaf6c98b1ed73588451a69770157572339bc1480c247aeb5fc62e9342ec8",
+            "grade": 3
+            }
+        ]
+        },
+        {
+        "id": "rippletalk-03",
+        "source_type": "github",
+        "source": "https://github.com/Jaival-Suthar/RippleTalk",
+        "question": "How does RippleTalk's useChartData hook retrieve and normalize mood-trend data?",
+        "answerable": true,
+        "category": "code",
+        "m2_gold_evidence": [
+            {
+            "m2_chunk_id": "cee02dbf41c6697a700fb2e591e49667f3dbb5535c9a06ac671e8ecf836d85c5",
+            "grade": 3
+            }
+        ]
+        },
+        {
+        "id": "rippletalk-04",
+        "source_type": "github",
+        "source": "https://github.com/Jaival-Suthar/RippleTalk",
+        "question": "How does RippleTalk represent a user's points total and points history?",
+        "answerable": true,
+        "category": "code",
+        "m2_gold_evidence": [
+            {
+            "m2_chunk_id": "d1e6b527a1c6851175a6c3e0dd8609c4f8fd05a7bc7fd8449b19182d5d830b6f",
+            "grade": 3
+            },
+            {
+            "m2_chunk_id": "a7c7304211c8b7b4a8684d4d0b33be6821600afab378c09ddf21385590775b49",
+            "grade": 3
+            }
+        ]
+        },
+        {
+        "id": "rippletalk-05",
+        "source_type": "github",
+        "source": "https://github.com/Jaival-Suthar/RippleTalk",
+        "question": "What fields and types make up RippleTalk's canonical Post model on the frontend?",
+        "answerable": true,
+        "category": "exact_identifier",
+        "m2_gold_evidence": [
+            {
+            "m2_chunk_id": "697cb3cd4eb9a1c507db10994825d9b36fbd8babd9d67cd7990ab90456a2ae11",
+            "grade": 3
+            }
+        ]
+    },
+    {
+        "id": "perfengine-01",
+        "source_type": "code",
+        "source": "perfengine.zip",
+        "question": "How does PerfEngine decide which rules are executed for a file during applyRules?",
+        "answerable": true,
+        "category": "code",
+        "m2_gold_evidence": [
+        {
+            "m2_chunk_id": "11d3f314ccfb08fdcd0388039f02f91887a35dbfc0958883a9c1c1cd8ae45306",
+            "grade": 3
+        },
+        {
+            "m2_chunk_id": "06492af48a908816958f8695c49c4fe599afcd340e39c49431ce3b977bbc51fe",
+            "grade": 3
+        }
+        ]
+    },
+    {
+        "id": "perfengine-02",
+        "source_type": "code",
+        "source": "perfengine.zip",
+        "question": "What information does PerfEngine provide to visitor-based rules through VisitorRuleContext, and how are reported issues normalized?",
+        "answerable": true,
+        "category": "exact_identifier",
+        "m2_gold_evidence": [
+        {
+            "m2_chunk_id": "8847628336d00f48609dfa17b8ed3e4d2ddf3ea8dc36197b5e2724c1b6a04dcd",
+            "grade": 3
+        },
+        {
+            "m2_chunk_id": "c11131ed43f3a3066141d84c0f1a771f16d18ef2779eca47d24d4b15aee068c9",
+            "grade": 3
+        }
+        ]
+    },
+    {
+        "id": "perfengine-03",
+        "source_type": "code",
+        "source": "perfengine.zip",
+        "question": "How does PerfEngine's core/dynamic-sql-risk rule detect dynamically interpolated SQL, and what remediation does it recommend?",
+        "answerable": true,
+        "category": "code",
+        "m2_gold_evidence": [
+        {
+            "m2_chunk_id": "189cbaed11f0ef87ffd595ba6869bdefcc93654ba86df15744cca85dfb9753f4",
+            "grade": 3
+        },
+        {
+            "m2_chunk_id": "223fab4206eeca28f93069ec0ff9ea64eea91d7cf7520e6007dbe5a3fc36aa22",
+            "grade": 3
+        },
+        {
+            "m2_chunk_id": "bb936ef3972f2d588e4bf2951d7808643ac8e6b3ec033e8c9e9cc3774d8b9ff9",
+            "grade": 3
+        },
+        {
+            "m2_chunk_id": "e3005f3b90bd0dabd55ccf17bad6ac3e08ac7798fbc2386c3841d4d006cc5118",
+            "grade": 3
+        }
+        ]
+    },
+    {
+        "id": "perfengine-04",
+        "source_type": "code",
+        "source": "perfengine.zip",
+        "question": "How does PerfEngine build a PerformanceSummary from detected performance findings?",
+        "answerable": true,
+        "category": "code",
+        "m2_gold_evidence": [
+        {
+            "m2_chunk_id": "9f64e37eafe4eef0b0f8e0cd3fd5227e7fb74fbb536337646c0c4d978c3bd893",
+            "grade": 3
+        },
+        {
+            "m2_chunk_id": "6c3824c765011d460ce86f77ef66cad565ab23f1350c1306c641f207d0571060",
+            "grade": 3
+        }
+        ]
+    },
+    {
+        "id": "perfengine-05",
+        "source_type": "code",
+        "source": "perfengine.zip",
+        "question": "How does PerfEngine determine whether a SQL query has a filtering condition before reporting core/full-table-scan-risk?",
+        "answerable": true,
+        "category": "code",
+        "m2_gold_evidence": [
+        {
+            "m2_chunk_id": "ba22d021a078534db3cca7b4df7c124a79ada6d379ce271224c1e6a61bdbf22d",
+            "grade": 3
+        },
+        {
+            "m2_chunk_id": "501e6130380b7b744f2abb84d55d37161e87a50ffb6277a5095a256bd5a71f96",
+            "grade": 3
+        },
+        {
+            "m2_chunk_id": "f439d5d0e08f89fc39d4b9ee63c736a8839809f18b478bf248e677f282750d12",
+            "grade": 3
+        },
+        {
+            "m2_chunk_id": "645a3fbb79bc342230b7af36a09ed8ff97dc7ba77f357ee4af1853588f184e33",
+            "grade": 3
+        },
+        {
+            "m2_chunk_id": "982f429d4bcfa1935557785f0b544da492a670a97347e91539672a891ad76cbb",
+            "grade": 3
+        }
+        ]
+    }
+  ]
+}
