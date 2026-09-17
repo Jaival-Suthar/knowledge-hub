@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from knowledge_hub.retrieval.fusion import ReciprocalRankFusion
 from knowledge_hub.retrieval.reranking import CrossEncoderReranker
-from knowledge_hub.retrieval.structural import structural_eligible
+from knowledge_hub.retrieval.structural import StructuralEligibility
 from knowledge_hub.retrieval.types import RetrievalTrace
 
 
@@ -16,6 +16,7 @@ class RetrievalPipeline:
         self.sparse = sparse
         self.reranker = reranker
         self.fusion = ReciprocalRankFusion()
+        self.structural_eligibility = StructuralEligibility()
 
     def search(
         self,
@@ -31,9 +32,9 @@ class RetrievalPipeline:
             [trace.dense_results, trace.bm25_results],
             top_k=max(dense_k, sparse_k),
         )
-        trace.filtered_results = [
-            item for item in trace.fusion_results if structural_eligible(item.chunk)
-        ]
+        trace.filtered_results = self.structural_eligibility.filter(
+            trace.fusion_results
+        )
         if self.reranker is not None:
             trace.reranked_results = self.reranker.rerank(
                 query, trace.filtered_results, rerank_k

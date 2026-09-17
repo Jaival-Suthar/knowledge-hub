@@ -1,10 +1,38 @@
 from __future__ import annotations
 
 import re
+from collections.abc import Iterable
+from enum import StrEnum
 
 from knowledge_hub.models import Chunk
+from knowledge_hub.retrieval.types import RankedChunk
 
-EXCLUDED_CONTENT_ROLES = frozenset({"navigation", "metadata", "reference"})
+
+class EligibilityStatus(StrEnum):
+    """Outcome of structural eligibility evaluation."""
+
+    ELIGIBLE = "eligible"
+    INELIGIBLE = "ineligible"
+    UNKNOWN = "unknown"
+
+
+STRUCTURAL_ELIGIBILITY_POLICY = {
+    "documentation": EligibilityStatus.ELIGIBLE,
+    "implementation": EligibilityStatus.ELIGIBLE,
+    "evidence": EligibilityStatus.ELIGIBLE,
+    "reference": EligibilityStatus.ELIGIBLE,
+    "test": EligibilityStatus.ELIGIBLE,
+    "configuration": EligibilityStatus.ELIGIBLE,
+    "navigation": EligibilityStatus.INELIGIBLE,
+    "metadata": EligibilityStatus.INELIGIBLE,
+}
+
+EXCLUDED_CONTENT_ROLES = frozenset(
+    role
+    for role, status in STRUCTURAL_ELIGIBILITY_POLICY.items()
+    if status is EligibilityStatus.INELIGIBLE
+)
+_LEGACY_EXCLUDED_ROLES = frozenset({"navigation", "metadata", "reference"})
 
 _STRUCTURAL_LABELS = frozenset(
     {
@@ -121,8 +149,8 @@ def _is_reference_or_glossary(chunk: Chunk, content: str) -> bool:
     return _looks_like_index(content)
 
 
-def classify_content_role(chunk: Chunk) -> str:
-    """Classify a canonical chunk, prioritising structural evidence."""
+def infer_legacy_structural_role(chunk: Chunk) -> str | None:
+    """Infer a role for chunks created before canonical role metadata."""
     content = chunk.content.strip().lower()
     content_flat = _normal(chunk.content)
     parent = _normal(chunk.parent_structure)
@@ -143,11 +171,47 @@ def classify_content_role(chunk: Chunk) -> str:
         return "metadata"
     if _is_reference_or_glossary(chunk, content):
         return "reference"
-    if chunk.content_role:
-        return _normal(chunk.content_role)
-    return "documentation"
+    return None
 
 
 def structural_eligible(chunk: Chunk) -> bool:
-    """Return whether one canonical chunk is eligible for retrieval."""
-    return classify_content_role(chunk) not in EXCLUDED_CONTENT_ROLES
+    """Return whether one canonical chunk is eligible for retrieval.
+
+    Explicit canonical roles use ``STRUCTURAL_ELIGIBILITY_POLICY``. Chunks
+    without a role retain the prior conservative structural heuristics for
+    backward compatibility; otherwise unknown roles remain eligible.
+    """
+    return StructuralEligibility().is_eligible(chunk)
+
+
+class StructuralEligibility:
+    """Source-agnostic post-RRF structural eligibility stage.
+
+    Navigation and metadata are initially excluded; documentation,
+    implementation, evidence, reference, test, and configuration remain
+    eligible. Missing or unrecognized roles are unknown and are retained.
+    The stage does not inspect a source system or mutate ranked results.
+    """
+
+    policy = STRUCTURAL_ELIGIBILITY_POLICY
+
+    def classify(self, chunk: Chunk) -> EligibilityStatus:
+        """Return the policy decision for one canonical chunk."""
+        if chunk.content_role:
+            role = _normal(chunk.content_role)
+            return self.policy.get(role, EligibilityStatus.UNKNOWN)
+
+        # Preserve the existing inferred structural exclusions for old
+        # chunks that predate the canonical content_role field.
+        inferred = infer_legacy_structural_role(chunk)
+        if inferred in _LEGACY_EXCLUDED_ROLES:
+            return EligibilityStatus.INELIGIBLE
+        return EligibilityStatus.UNKNOWN
+
+    def is_eligible(self, chunk: Chunk) -> bool:
+        """Return true for eligible and unknown chunks, false otherwise."""
+        return self.classify(chunk) is not EligibilityStatus.INELIGIBLE
+
+    def filter(self, results: Iterable[RankedChunk]) -> list[RankedChunk]:
+        """Filter ranked results while preserving objects and original ranks."""
+        return [result for result in results if self.is_eligible(result.chunk)]
