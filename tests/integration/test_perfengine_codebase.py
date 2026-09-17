@@ -83,7 +83,7 @@ def test_perfengine_files_survive_parser_chunker_and_canonical_mapping() -> None
 
     assert parsed_files == len(discovered.files)
     assert files_with_symbols > 0
-    assert parse_errors > 0
+    assert parse_errors == 0
     assert canonical_documents
     assert canonical_chunks
     assert len({document.document_id for document in canonical_documents}) == len(

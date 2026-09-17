@@ -11,9 +11,11 @@ from knowledge_hub.ingestion.code import (
 )
 
 
-def code_file(language: Language, content: str) -> CodeFile:
+def code_file(
+    language: Language, content: str, relative_path: str = "fixture.source"
+) -> CodeFile:
     return CodeFile(
-        Path("fixture"), "fixture.source", language, content, len(content), "hash"
+        Path(relative_path), relative_path, language, content, len(content), "hash"
     )
 
 
@@ -50,6 +52,25 @@ def test_typescript_symbols_have_locations_and_relationships() -> None:
     assert method.parent == "Auth"
     assert method.qualified_name == "Auth.login"
     assert (method.start_line, method.end_line) == (2, 2)
+
+
+def test_typescript_and_tsx_share_language_but_dispatch_by_file_extension() -> None:
+    registry = ParserRegistry.default()
+    parser = registry.get(Language.TYPESCRIPT)
+    typescript = parser.parse(
+        code_file(Language.TYPESCRIPT, "const value: string = 'ok';", "file.ts")
+    )
+    tsx = parser.parse(
+        code_file(
+            Language.TYPESCRIPT,
+            "export function App() { return <main>Hello</main>; }\n",
+            "App.tsx",
+        )
+    )
+
+    assert typescript.errors == ()
+    assert tsx.errors == ()
+    assert [symbol.qualified_name for symbol in tsx.symbols] == ["App"]
 
 
 def test_python_symbols_include_methods_and_async_functions() -> None:

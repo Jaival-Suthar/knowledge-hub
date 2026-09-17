@@ -31,7 +31,12 @@ class TreeSitterParser(LanguageParser):
 
     def parse(self, code_file: CodeFile) -> CodeParseResult:
         source = code_file.content.encode("utf-8")
-        tree = self._parser.parse(source)
+        return self._parse_with_parser(self._parser, code_file, source)
+
+    def _parse_with_parser(
+        self, parser: Parser, code_file: CodeFile, source: bytes
+    ) -> CodeParseResult:
+        tree = parser.parse(source)
         errors = tuple(self._errors(tree.root_node, code_file))
         symbols = tuple(self._symbols(tree.root_node, source, code_file))
         return CodeParseResult(symbols=symbols, errors=errors)
