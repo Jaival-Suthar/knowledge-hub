@@ -20,5 +20,6 @@ class RetrievalTrace:
     bm25_results: list[RankedChunk] = field(default_factory=list)
     fusion_results: list[RankedChunk] = field(default_factory=list)
     filtered_results: list[RankedChunk] = field(default_factory=list)
+    metadata_filtered_results: list[RankedChunk] = field(default_factory=list)
     reranked_results: list[RankedChunk] = field(default_factory=list)
     final_evidence: list[RankedChunk] = field(default_factory=list)
