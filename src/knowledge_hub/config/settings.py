@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     embedding_device: str = "cpu"
     embedding_dimension: int = 384
     embedding_normalize: bool = True
+    reranker_model_name: str = "BAAI/bge-reranker-base"
     qdrant_url: str = "http://localhost:6333"
     qdrant_collection: str = "knowledge_hub"
     dense_top_k: int = 20

@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 from knowledge_hub.retrieval.fusion import ReciprocalRankFusion
+from knowledge_hub.retrieval.metadata import MetadataFilter, MetadataFilters
 from knowledge_hub.retrieval.reranking import CrossEncoderReranker
-from knowledge_hub.retrieval.structural import structural_eligible
+from knowledge_hub.retrieval.structural import StructuralEligibility
 from knowledge_hub.retrieval.types import RetrievalTrace
 
 
@@ -10,12 +11,21 @@ class RetrievalPipeline:
     """Inspectable M2 retrieval pipeline: dense + BM25 -> RRF -> filter -> rerank."""
 
     def __init__(
-        self, dense, sparse, reranker: CrossEncoderReranker | None = None
+        self,
+        dense,
+        sparse,
+        reranker: CrossEncoderReranker | None = None,
+        *,
+        rrf_k: int = 60,
+        enable_structural_filter: bool = True,
     ) -> None:
         self.dense = dense
         self.sparse = sparse
         self.reranker = reranker
-        self.fusion = ReciprocalRankFusion()
+        self.fusion = ReciprocalRankFusion(k=rrf_k)
+        self.enable_structural_filter = enable_structural_filter
+        self.structural_eligibility = StructuralEligibility()
+        self.metadata_filter = MetadataFilter()
 
     def search(
         self,
@@ -23,6 +33,7 @@ class RetrievalPipeline:
         dense_k: int = 20,
         sparse_k: int = 20,
         rerank_k: int = 5,
+        metadata_filters: MetadataFilters | None = None,
     ) -> RetrievalTrace:
         trace = RetrievalTrace(query=query)
         trace.dense_results = self.dense.search(query, dense_k)
@@ -31,14 +42,19 @@ class RetrievalPipeline:
             [trace.dense_results, trace.bm25_results],
             top_k=max(dense_k, sparse_k),
         )
-        trace.filtered_results = [
-            item for item in trace.fusion_results if structural_eligible(item.chunk)
-        ]
+        trace.filtered_results = (
+            self.structural_eligibility.filter(trace.fusion_results)
+            if self.enable_structural_filter
+            else list(trace.fusion_results)
+        )
+        trace.metadata_filtered_results = self.metadata_filter.filter(
+            trace.filtered_results, metadata_filters
+        )
         if self.reranker is not None:
             trace.reranked_results = self.reranker.rerank(
-                query, trace.filtered_results, rerank_k
+                query, trace.metadata_filtered_results, rerank_k
             )
             trace.final_evidence = trace.reranked_results
         else:
-            trace.final_evidence = trace.filtered_results[:rerank_k]
+            trace.final_evidence = trace.metadata_filtered_results[:rerank_k]
         return trace

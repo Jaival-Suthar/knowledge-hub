@@ -15,6 +15,7 @@ from knowledge_hub.ingestion.github import (
     GitHubRepositorySource,
     discover_github_repository,
     github_provenance,
+    ingest_github_repository,
 )
 from knowledge_hub.models import SourceType
 
@@ -90,3 +91,29 @@ def test_rippletalk_code_artifact_preserves_github_provenance() -> None:
         pytest.fail("RippleTalk produced no semantic code artifact")
     finally:
         result.cleanup()
+
+
+def test_rippletalk_tsx_files_parse_into_semantic_chunks() -> None:
+    result = ingest_github_repository(
+        "https://github.com/Jaival-Suthar/RippleTalk",
+        ref="main",
+    )
+
+    expected_paths = (
+        "src/App.tsx",
+        "src/components/Navbar.tsx",
+        "src/context/AuthProvider.tsx",
+        "src/pages/home/page.tsx",
+        "src/pages/login/page.tsx",
+        "src/pages/registration/page.tsx",
+    )
+
+    files_by_path = {item.code_file.relative_path: item for item in result.file_results}
+    for path in expected_paths:
+        file_result = files_by_path[f"rippletalk/{path}"]
+        assert file_result.parse_result.errors == ()
+
+    app_result = files_by_path["rippletalk/src/App.tsx"]
+    assert app_result.parse_result.symbols
+    assert app_result.canonical_chunks
+    assert len(result.chunks) > 25
