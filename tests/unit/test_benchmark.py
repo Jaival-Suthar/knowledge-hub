@@ -5,13 +5,22 @@ import sys
 import pytest
 
 from knowledge_hub.evaluation import benchmark
-from knowledge_hub.evaluation.retrieval import EvaluationReport, RetrievalMetrics
+from knowledge_hub.evaluation.retrieval import (
+    EvaluationQuestion,
+    EvaluationReport,
+    RetrievalMetrics,
+)
+from knowledge_hub.models import SourceType
 
 
 def test_benchmark_cli_selects_each_retrieval_mode(monkeypatch, tmp_path) -> None:
     selected: list[tuple[str, int | None]] = []
 
-    monkeypatch.setattr(benchmark, "load_pdf_chunks", lambda path: ())
+    monkeypatch.setattr(
+        benchmark,
+        "load_corpus",
+        lambda: type("Corpus", (), {"chunks": (), "documents": ()})(),
+    )
     monkeypatch.setattr(benchmark, "load_questions", lambda path: ())
 
     def fake_report(name: str, rrf_k: int | None = None):
@@ -45,9 +54,39 @@ def test_benchmark_cli_selects_each_retrieval_mode(monkeypatch, tmp_path) -> Non
     assert selected == [("dense", None), ("bm25", None), ("hybrid", 60)]
 
 
+def test_load_questions_preserves_and_maps_declared_source_metadata(tmp_path) -> None:
+    dataset = tmp_path / "questions.json"
+    dataset.write_text(
+        '{"questions": ['
+        '{"id":"article","source_type":"article",'
+        '"source":"https://example.test/article","question":"a",'
+        '"answerable":true,"m2_gold_evidence":[]},'
+        '{"id":"github","source_type":"github",'
+        '"source":"https://github.com/example/repo","question":"b",'
+        '"answerable":true,"m2_gold_evidence":[]},'
+        '{"id":"code","source_type":"code",'
+        '"source":"perfengine/file.ts","question":"c",'
+        '"answerable":true,"m2_gold_evidence":[]}'
+        "]}",
+        encoding="utf-8",
+    )
+
+    questions = benchmark.load_questions(dataset)
+
+    assert [(item.source_type, item.source) for item in questions] == [
+        (SourceType.ARTICLE, "https://example.test/article"),
+        (SourceType.GITHUB, "https://github.com/example/repo"),
+        (SourceType.CODE, "perfengine/file.ts"),
+    ]
+
+
 def test_benchmark_cli_forwards_explicit_rrf_k_to_hybrid(monkeypatch, tmp_path) -> None:
     captured: dict[str, int] = {}
-    monkeypatch.setattr(benchmark, "load_pdf_chunks", lambda path: ())
+    monkeypatch.setattr(
+        benchmark,
+        "load_corpus",
+        lambda: type("Corpus", (), {"chunks": (), "documents": ()})(),
+    )
     monkeypatch.setattr(benchmark, "load_questions", lambda path: ())
     monkeypatch.setattr(
         benchmark,
@@ -138,3 +177,103 @@ def test_hybrid_report_records_the_value_forwarded_to_hybrid(
     assert report.rrf_k == rrf_k
     assert forwarded == {"rrf_k": rrf_k}
     assert report.as_dict()["rrf_k"] == rrf_k
+
+
+def test_pipeline_evaluation_adapter_preserves_pipeline_trace_results() -> None:
+    question = EvaluationQuestion(
+        id="q1",
+        category="answerable",
+        question="query",
+        answerable=True,
+        gold_chunk_ids=frozenset(),
+        graded_relevance={},
+        source_type=SourceType.ARTICLE,
+        source="https://example.test/article",
+    )
+
+    class FakePipeline:
+        dense = type("Dense", (), {"last_timing": None})()
+
+        def __init__(self):
+            self.calls = []
+
+        def search(self, query, **kwargs):
+            self.calls.append((query, kwargs))
+            return type("Trace", (), {"final_evidence": []})()
+
+    pipeline = FakePipeline()
+    adapter = benchmark._PipelineEvaluationAdapter(
+        pipeline,
+        candidate_k=20,
+        questions=(question,),
+        enable_metadata_filter=True,
+    )
+
+    assert adapter.search("query", 5) == []
+    assert pipeline.calls == [
+        (
+            "query",
+            {
+                "dense_k": 20,
+                "sparse_k": 20,
+                "rerank_k": 5,
+                "metadata_filters": benchmark.MetadataFilters(
+                    source_type=SourceType.ARTICLE
+                ),
+            },
+        )
+    ]
+
+
+@pytest.mark.parametrize(
+    ("config", "expected"),
+    [
+        (
+            benchmark.PipelineExperimentConfig("e4", True, False, False),
+            (True, False, False),
+        ),
+        (
+            benchmark.PipelineExperimentConfig("e5", True, False, True),
+            (True, False, True),
+        ),
+        (
+            benchmark.PipelineExperimentConfig("e6", True, True, True),
+            (True, True, True),
+        ),
+    ],
+)
+def test_pipeline_experiment_passes_stage_configuration(
+    monkeypatch, config, expected
+) -> None:
+    captured = {}
+    base_report = EvaluationReport(
+        retriever=config.name,
+        metrics=RetrievalMetrics(0, 0, 0, 0, 0, 0, 0, 0),
+        by_category={},
+        queries=(),
+    )
+
+    class FakePipeline:
+        def __init__(self, dense, sparse, **kwargs):
+            captured["pipeline"] = kwargs
+            captured["has_reranker"] = kwargs["reranker"] is not None
+            self.dense = type("Dense", (), {"last_timing": None})()
+
+    monkeypatch.setattr(benchmark, "_build_dense_retriever", lambda **kwargs: object())
+    monkeypatch.setattr(benchmark, "BM25Retriever", lambda chunks: object())
+    monkeypatch.setattr(benchmark, "RetrievalPipeline", FakePipeline)
+    monkeypatch.setattr(benchmark, "CrossEncoderReranker", lambda model_name: object())
+    monkeypatch.setattr(
+        benchmark, "evaluate_retriever", lambda *args, **kwargs: base_report
+    )
+
+    benchmark.run_pipeline_experiment(
+        (),
+        (),
+        qdrant_url="q",
+        collection="c",
+        config=config,
+    )
+
+    assert captured["pipeline"]["enable_structural_filter"] is expected[0]
+    assert captured["has_reranker"] is expected[2]

@@ -8,7 +8,7 @@ from dataclasses import asdict, dataclass
 from math import log2
 from time import perf_counter
 
-from knowledge_hub.models import Chunk
+from knowledge_hub.models import Chunk, SourceType
 from knowledge_hub.retrieval.types import RankedChunk
 
 
@@ -22,6 +22,8 @@ class EvaluationQuestion:
     answerable: bool
     gold_chunk_ids: frozenset[str]
     graded_relevance: dict[str, int]
+    source_type: SourceType | None = None
+    source: str | None = None
 
 
 @dataclass(frozen=True)

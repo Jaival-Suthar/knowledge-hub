@@ -11,12 +11,19 @@ class RetrievalPipeline:
     """Inspectable M2 retrieval pipeline: dense + BM25 -> RRF -> filter -> rerank."""
 
     def __init__(
-        self, dense, sparse, reranker: CrossEncoderReranker | None = None
+        self,
+        dense,
+        sparse,
+        reranker: CrossEncoderReranker | None = None,
+        *,
+        rrf_k: int = 60,
+        enable_structural_filter: bool = True,
     ) -> None:
         self.dense = dense
         self.sparse = sparse
         self.reranker = reranker
-        self.fusion = ReciprocalRankFusion()
+        self.fusion = ReciprocalRankFusion(k=rrf_k)
+        self.enable_structural_filter = enable_structural_filter
         self.structural_eligibility = StructuralEligibility()
         self.metadata_filter = MetadataFilter()
 
@@ -35,8 +42,10 @@ class RetrievalPipeline:
             [trace.dense_results, trace.bm25_results],
             top_k=max(dense_k, sparse_k),
         )
-        trace.filtered_results = self.structural_eligibility.filter(
-            trace.fusion_results
+        trace.filtered_results = (
+            self.structural_eligibility.filter(trace.fusion_results)
+            if self.enable_structural_filter
+            else list(trace.fusion_results)
         )
         trace.metadata_filtered_results = self.metadata_filter.filter(
             trace.filtered_results, metadata_filters

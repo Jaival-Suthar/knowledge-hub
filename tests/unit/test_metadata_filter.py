@@ -169,3 +169,21 @@ def test_pipeline_applies_metadata_after_structural_filtering() -> None:
     assert trace.metadata_filtered_results[0] is structural_item
     assert trace.metadata_filtered_results[0].chunk is implementation.chunk
     assert trace.final_evidence == trace.metadata_filtered_results
+
+
+def test_pipeline_can_disable_structural_filtering() -> None:
+    navigation = make_result("navigation", content_role=ContentRole.NAVIGATION)
+
+    class FakeRetriever:
+        def search(self, query, top_k):
+            return [navigation]
+
+    trace = RetrievalPipeline(
+        FakeRetriever(),
+        FakeRetriever(),
+        enable_structural_filter=False,
+    ).search("query", dense_k=1, sparse_k=1, rerank_k=5)
+
+    assert trace.filtered_results == trace.fusion_results
+    assert trace.final_evidence
+    assert trace.final_evidence[0].chunk is navigation.chunk
