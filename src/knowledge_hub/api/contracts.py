@@ -33,9 +33,20 @@ class RetrieveRequest(BaseModel):
 
 
 class IngestRequest(BaseModel):
-    """Request contract for the future ``POST /ingest`` endpoint."""
+    """JSON request contract for URL or local-path ingestion."""
 
     source: str = Field(min_length=1)
+    source_type: SourceType | None = None
+
+
+class IngestMultipartRequest(BaseModel):
+    """OpenAPI-only schema for the existing multipart ingestion form."""
+
+    file: bytes | None = Field(
+        default=None,
+        description="Optional Markdown, PDF, or ZIP upload.",
+    )
+    source: str | None = Field(default=None, min_length=1)
     source_type: SourceType | None = None
 
 
@@ -77,7 +88,22 @@ class SourceResponse(BaseModel):
 
 
 class IngestResponse(BaseModel):
-    """Response contract for future ingestion results."""
+    """Canonical result summary returned after synchronous ingestion."""
 
+    source_type: SourceType
     documents: list[Document] = Field(default_factory=list)
     chunks: list[Chunk] = Field(default_factory=list)
+
+
+class DocumentListResponse(BaseModel):
+    """Paginated view over canonical documents."""
+
+    documents: list[Document] = Field(default_factory=list)
+    limit: int = Field(gt=0)
+    offset: int = Field(ge=0)
+
+
+class SourcesResponse(BaseModel):
+    """Deduplicated source/provenance view over canonical documents."""
+
+    sources: list[SourceResponse] = Field(default_factory=list)

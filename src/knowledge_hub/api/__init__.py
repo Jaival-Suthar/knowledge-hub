@@ -1,5 +1,6 @@
 from .app import app, create_app
 from .contracts import (
+    DocumentListResponse,
     DocumentResponse,
     IngestRequest,
     IngestResponse,
@@ -10,9 +11,11 @@ from .contracts import (
     SearchRequest,
     SearchResponse,
     SourceResponse,
+    SourcesResponse,
 )
 
 __all__ = [
+    "DocumentListResponse",
     "DocumentResponse",
     "IngestRequest",
     "IngestResponse",
@@ -23,6 +26,7 @@ __all__ = [
     "SearchRequest",
     "SearchResponse",
     "SourceResponse",
+    "SourcesResponse",
     "app",
     "create_app",
 ]

@@ -2,9 +2,15 @@
 
 from __future__ import annotations
 
-from collections.abc import Iterable, Mapping
+from collections.abc import Iterable
 
+from knowledge_hub.config.settings import Settings
+from knowledge_hub.indexing.embedding import embed_and_upsert
+from knowledge_hub.indexing.qdrant import QdrantIndex
+from knowledge_hub.inference.embedder import Embedder, SentenceTransformerEmbedder
 from knowledge_hub.models import Chunk
+from knowledge_hub.retrieval.bm25 import BM25Retriever
+from knowledge_hub.retrieval.dense import QdrantDenseRetriever
 from knowledge_hub.retrieval.metadata import MetadataFilters
 from knowledge_hub.retrieval.pipeline import RetrievalPipeline
 from knowledge_hub.retrieval.types import RankedChunk
@@ -27,9 +33,30 @@ class KnowledgeRetrievalService:
         self,
         pipeline: RetrievalPipeline,
         chunks: Iterable[Chunk],
+        *,
+        index: QdrantIndex | None = None,
+        embedder: Embedder | None = None,
     ) -> None:
         self.pipeline = pipeline
-        self.chunks: Mapping[str, Chunk] = {chunk.chunk_id: chunk for chunk in chunks}
+        self.chunks: dict[str, Chunk] = {chunk.chunk_id: chunk for chunk in chunks}
+        self._index = index
+        self._embedder = embedder
+        self._persisted_chunk_ids = set(self.chunks)
+
+    def add_chunks(self, chunks: Iterable[Chunk]) -> None:
+        """Add canonical chunks to lookup, sparse, and dense retrieval state."""
+        incoming = tuple(chunks)
+        new_chunks = tuple(
+            chunk
+            for chunk in incoming
+            if chunk.chunk_id not in self._persisted_chunk_ids
+        )
+        if new_chunks and self._index is not None and self._embedder is not None:
+            embed_and_upsert(self._index, new_chunks, self._embedder)
+            self._persisted_chunk_ids.update(chunk.chunk_id for chunk in new_chunks)
+
+        self.chunks.update({chunk.chunk_id: chunk for chunk in incoming})
+        self.pipeline.sparse.update(self.chunks.values())
 
     def search(self, request: SearchRequest) -> list[RankedChunk]:
         """Run the existing pipeline with API request values."""
@@ -50,6 +77,36 @@ class KnowledgeRetrievalService:
         if missing_ids:
             raise ChunksNotFoundError(missing_ids)
         return [self.chunks[chunk_id] for chunk_id in requested_ids]
+
+
+def build_retrieval_service(
+    config: Settings,
+    chunks: Iterable[Chunk] = (),
+) -> KnowledgeRetrievalService:
+    """Build the existing configured dense+sparse retrieval stack lazily."""
+    embedder = SentenceTransformerEmbedder(
+        model_name=config.embedding_model_name,
+        dimension=config.embedding_dimension,
+        device=config.embedding_device,
+        normalize_embeddings=config.embedding_normalize,
+    )
+    index = QdrantIndex(
+        url=config.qdrant_url,
+        collection=config.qdrant_collection,
+        vector_size=config.embedding_dimension,
+    )
+    dense = QdrantDenseRetriever(
+        client=index.client,
+        collection=index.collection,
+        embedder=embedder,
+    )
+    pipeline = RetrievalPipeline(dense, BM25Retriever(chunks))
+    return KnowledgeRetrievalService(
+        pipeline,
+        chunks,
+        index=index,
+        embedder=embedder,
+    )
 
 
 def to_metadata_filters(
