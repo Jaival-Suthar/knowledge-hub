@@ -47,6 +47,7 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["src", "."]
 
 # Resolve PyTorch from the CPU-only index.
 [[tool.uv.index]]
